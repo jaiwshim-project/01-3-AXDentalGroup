@@ -20,7 +20,7 @@
     .nav{background:rgba(244,248,253,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);position:fixed;top:0;left:0;right:0;z-index:100;}
     .nav-link{color:var(--sub);font-size:0.85rem;font-weight:500;transition:color .2s;cursor:pointer;text-decoration:none;}
     .nav-link:hover,.nav-link.nav-active{color:var(--teal);font-weight:700;}
-    .btn-cta-nav{background:linear-gradient(135deg,#0ABFA3,#1E6FBF);color:#fff;font-weight:700;font-size:0.82rem;border:none;border-radius:9px;padding:9px 20px;cursor:pointer;box-shadow:0 2px 12px rgba(10,191,163,0.25);transition:box-shadow .2s,transform .2s;text-decoration:none;display:inline-block;}
+    .btn-cta-nav{background:linear-gradient(135deg,#0ABFA3,#1E6FBF);color:#fff;font-weight:700;font-size:0.82rem;border:1.5px solid rgba(255,255,255,0.3);border-radius:9px;padding:9px 20px;cursor:pointer;box-shadow:0 2px 12px rgba(10,191,163,0.25);transition:box-shadow .2s,transform .2s;text-decoration:none;display:inline-block;}
     .btn-cta-nav:hover{box-shadow:0 4px 18px rgba(10,191,163,0.35);transform:translateY(-1px);}
     .hero{min-height:100vh;background:linear-gradient(160deg,#F0F7FF 0%,#FAFCFF 40%,#F0FAF8 100%);position:relative;overflow:hidden;display:flex;align-items:center;}
     .hero-dot-grid{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,rgba(10,191,163,0.12) 1.5px,transparent 1.5px);background-size:32px 32px;}
@@ -34,21 +34,21 @@
     .hero-title{font-size:clamp(2.4rem,4.5vw,4rem);font-weight:900;line-height:1.1;letter-spacing:-0.035em;color:var(--navy);}
     .hero-em{background:linear-gradient(90deg,#0ABFA3 0%,#1E6FBF 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
     .hero-sub{font-size:1.05rem;color:var(--sub);line-height:1.85;max-width:500px;margin-top:18px;}
-    .btn-primary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#0ABFA3,#1E6FBF);color:#fff;font-weight:700;font-size:0.9rem;border-radius:12px;padding:14px 30px;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(10,191,163,0.28);transition:transform .2s,box-shadow .2s;text-decoration:none;}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#0ABFA3,#1E6FBF);color:#fff;font-weight:700;font-size:0.9rem;border-radius:12px;padding:14px 30px;border:1.5px solid rgba(255,255,255,0.25);cursor:pointer;box-shadow:0 4px 20px rgba(10,191,163,0.28);transition:transform .2s,box-shadow .2s;text-decoration:none;}
     .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(10,191,163,0.38);}
-    .btn-secondary{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--navy);font-weight:600;font-size:0.9rem;border-radius:12px;padding:14px 28px;border:1.5px solid var(--border);cursor:pointer;transition:border-color .2s,box-shadow .2s;text-decoration:none;}
+    .btn-secondary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#F5F9FF,#EBF3FD);color:var(--navy);font-weight:600;font-size:0.9rem;border-radius:12px;padding:14px 28px;border:1.5px solid rgba(30,111,191,0.28);cursor:pointer;transition:border-color .2s,box-shadow .2s;text-decoration:none;}
     .btn-secondary:hover{border-color:var(--teal);box-shadow:0 2px 12px rgba(10,191,163,0.12);}
     .hero-stats-row{display:flex;align-items:center;gap:6px;margin-top:36px;flex-wrap:wrap;}
-    .stat-pill{background:#fff;border:1px solid var(--border);border-radius:50px;padding:8px 16px;display:flex;align-items:center;gap:8px;box-shadow:0 2px 10px rgba(10,22,40,0.05);}
+    .stat-pill{background:linear-gradient(135deg,#fff,#F5FFFE);border:1.5px solid rgba(10,191,163,0.2);border-radius:50px;padding:8px 16px;display:flex;align-items:center;gap:8px;box-shadow:0 3px 12px rgba(10,22,40,0.07);}
     .stat-pill-num{font-size:1rem;font-weight:900;color:var(--navy);letter-spacing:-0.02em;}
     .stat-pill-num em{color:var(--teal);font-style:normal;}
     .stat-pill-label{font-size:0.72rem;color:var(--sub2);font-weight:500;}
-    .hero-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:24px;box-shadow:0 8px 40px rgba(10,22,40,0.1);max-width:340px;}
+    .hero-card{background:#fff;border:1.5px solid rgba(10,191,163,0.22);border-radius:20px;padding:24px;box-shadow:0 16px 56px rgba(10,22,40,0.14);max-width:340px;}
     .ai-chip{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#E6FAF7,#EBF3FD);border:1px solid rgba(10,191,163,0.25);border-radius:8px;padding:5px 12px;font-size:0.72rem;font-weight:800;color:var(--teal);letter-spacing:0.06em;margin-bottom:12px;}
     .score-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
     .score-bar-bg{flex:1;height:7px;background:#F0F4F8;border-radius:4px;overflow:hidden;margin:0 10px;}
     .score-bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,#0ABFA3,#1E6FBF);}
-    .stats-band{background:var(--navy);padding:36px 0;}
+    .stats-band{background:linear-gradient(135deg,#0A1628 0%,#0d2040 60%,#0A2038 100%);padding:36px 0;}
     .stats-band-item{text-align:center;flex:1;padding:0 12px;}
     .stats-band-num{font-size:2.2rem;font-weight:900;color:#fff;letter-spacing:-0.03em;line-height:1;}
     .stats-band-num em{color:#0ABFA3;font-style:normal;}
@@ -61,19 +61,19 @@
     .sec-desc{font-size:0.97rem;color:var(--sub);line-height:1.82;margin-top:12px;}
     .divider{width:48px;height:3px;background:linear-gradient(90deg,#0ABFA3,#1E6FBF);border-radius:3px;margin:14px 0;}
     .about-bg{background:var(--bg);}
-    .vision-box{background:#fff;border:1px solid var(--border);border-radius:24px;padding:48px;box-shadow:0 4px 32px rgba(10,22,40,0.06);position:relative;overflow:hidden;}
+    .vision-box{background:#fff;border:1.5px solid rgba(10,191,163,0.2);border-radius:24px;padding:48px;box-shadow:0 8px 48px rgba(10,22,40,0.08);position:relative;overflow:hidden;}
     .vision-box::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#0ABFA3,#1E6FBF,#B8960C);}
     .pillar{flex:1;border-radius:18px;padding:28px 22px;text-align:center;min-width:0;border:1.5px solid;}
-    .pillar-1{background:#F0FAF8;border-color:rgba(10,191,163,0.2);}
-    .pillar-2{background:#EBF3FD;border-color:rgba(30,111,191,0.2);}
-    .pillar-3{background:#FBF7E8;border-color:rgba(184,150,12,0.2);}
+    .pillar-1{background:linear-gradient(160deg,#E8F8F5,#F0FAF8);border-color:rgba(10,191,163,0.3);}
+    .pillar-2{background:linear-gradient(160deg,#E3EFFC,#EBF3FD);border-color:rgba(30,111,191,0.3);}
+    .pillar-3{background:linear-gradient(160deg,#FAF3DF,#FBF7E8);border-color:rgba(184,150,12,0.3);}
     .pillar-icon{width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin:0 auto 14px;}
     .pi1{background:linear-gradient(135deg,#0ABFA3,#1E6FBF);}
     .pi2{background:linear-gradient(135deg,#1E6FBF,#3B4FD8);}
     .pi3{background:linear-gradient(135deg,#B8960C,#E0A500);}
     /* Nav cards */
-    .nav-card{background:#fff;border:1.5px solid var(--border);border-radius:20px;padding:28px 24px;transition:transform .25s,box-shadow .25s,border-color .25s;text-decoration:none;display:block;position:relative;overflow:hidden;}
-    .nav-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#0ABFA3,#1E6FBF);}
+    .nav-card{background:linear-gradient(160deg,#fff 0%,#F5FFFE 100%);border:1.5px solid rgba(10,191,163,0.18);border-radius:20px;padding:28px 24px;box-shadow:0 4px 20px rgba(10,22,40,0.06);transition:transform .25s,box-shadow .25s,border-color .25s;text-decoration:none;display:block;position:relative;overflow:hidden;}
+    .nav-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#0ABFA3,#1E6FBF);}
     .nav-card:hover{transform:translateY(-5px);box-shadow:0 14px 40px rgba(10,22,40,0.09);border-color:rgba(10,191,163,0.35);}
     .nav-card-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:14px;background:var(--teal-light);}
     .nav-card-title{font-size:1rem;font-weight:800;color:var(--navy);margin-bottom:6px;letter-spacing:-0.01em;}
@@ -89,7 +89,24 @@
     .equip-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;}
     @media(max-width:900px){.equip-grid{grid-template-columns:repeat(4,1fr);}}
     @media(max-width:540px){.equip-grid{grid-template-columns:repeat(3,1fr);}}
-    @media(max-width:768px){.section{padding:64px 0;}.vision-box{padding:28px 20px;}}
+    @media(max-width:768px){
+      .section{padding:50px 0;}
+      .about-bg{padding:50px 0;}
+      .vision-box{padding:28px 20px;}
+      .sec-title{font-size:1.6rem;}
+      .hero-sub br{display:none;}
+      .hero-card{margin-top:32px;}
+      .btn-primary,.btn-secondary{width:100%;justify-content:center;}
+      /* Stats band: 2x2 grid, hide inline dividers */
+      .stats-band .flex.items-stretch{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+      .stats-band .flex.items-stretch > div[style*="width:1px"]{display:none;}
+      .stats-band-item{padding:16px 8px;}
+      .stats-band-num{font-size:1.7rem;}
+      /* Footer */
+      .footer-bg .flex.flex-col.md\\:flex-row{flex-direction:column;gap:32px;}
+      /* Images */
+      img{max-width:100%;height:auto;}
+    }
   </style>
 </head>
 <body>
@@ -250,49 +267,49 @@
         <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:6px;">디지털스마일치과 보유 장비</div>
         <p style="font-size:0.82rem;color:var(--sub);margin-bottom:20px;line-height:1.6;">7가지 최첨단 장비 데이터가 AI 플랫폼에 통합되어 종합 진단 리포트를 생성합니다.</p>
         <div class="equip-grid">
-          <div style="background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:12px 8px;text-align:center;">
+          <div style="background:linear-gradient(160deg,#fff,#F5FFFE);border:1.5px solid rgba(10,191,163,0.18);box-shadow:0 2px 10px rgba(10,22,40,0.05);border-radius:14px;padding:12px 8px;text-align:center;">
             <div style="height:72px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:8px;">
               <img src="https://www.vatech.com/files/attach/images/288/313/8d7e2996adad9bb09e47e34c370d5b47.jpg" alt="3D/5D CT" style="max-height:68px;max-width:100%;object-fit:contain;">
             </div>
             <div style="font-size:0.72rem;font-weight:800;color:var(--navy);line-height:1.3;">3D / 5D CT</div>
             <div style="font-size:0.65rem;color:var(--sub2);margin-top:2px;">Vatech PaX-i3D</div>
           </div>
-          <div style="background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:12px 8px;text-align:center;">
+          <div style="background:linear-gradient(160deg,#fff,#F5FFFE);border:1.5px solid rgba(10,191,163,0.18);box-shadow:0 2px 10px rgba(10,22,40,0.05);border-radius:14px;padding:12px 8px;text-align:center;">
             <div style="height:72px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:8px;">
               <img src="https://www.medit.com/wp-content/uploads/2023/11/medit-i700-1.webp" alt="구강 스캐너" style="max-height:68px;max-width:100%;object-fit:contain;">
             </div>
             <div style="font-size:0.72rem;font-weight:800;color:var(--navy);line-height:1.3;">구강 스캐너</div>
             <div style="font-size:0.65rem;color:var(--sub2);margin-top:2px;">Medit i700</div>
           </div>
-          <div style="background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:12px 8px;text-align:center;">
+          <div style="background:linear-gradient(160deg,#fff,#F5FFFE);border:1.5px solid rgba(10,191,163,0.18);box-shadow:0 2px 10px rgba(10,22,40,0.05);border-radius:14px;padding:12px 8px;text-align:center;">
             <div style="height:72px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:8px;">
               <img src="https://www.shining3ddental.com/hs-fs/hubfs/website-S3D-dental/images/2.%20Face%20Scanner/MetiSmile/37C3B8FC-60CF-40FA-B16F-672775DEA9FF.png" alt="페이스 스캐너" style="max-height:68px;max-width:100%;object-fit:contain;">
             </div>
             <div style="font-size:0.72rem;font-weight:800;color:var(--navy);line-height:1.3;">페이스 스캐너</div>
             <div style="font-size:0.65rem;color:var(--sub2);margin-top:2px;">Shining3D MetiSmile</div>
           </div>
-          <div style="background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:12px 8px;text-align:center;">
+          <div style="background:linear-gradient(160deg,#fff,#F5FFFE);border:1.5px solid rgba(10,191,163,0.18);box-shadow:0 2px 10px rgba(10,22,40,0.05);border-radius:14px;padding:12px 8px;text-align:center;">
             <div style="height:72px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:8px;">
               <img src="https://www.dentsplysirona.com/en-us/discover/discover-by-category/cad-cam/_jcr_content/root/container/dentsplycontainer_109571960/teaser_copy_86458042/image.coreimg.png/1665503971644/dsc-image-primescan-product-image.png" alt="CAD/CAM" style="max-height:68px;max-width:100%;object-fit:contain;">
             </div>
             <div style="font-size:0.72rem;font-weight:800;color:var(--navy);line-height:1.3;">CAD / CAM</div>
             <div style="font-size:0.65rem;color:var(--sub2);margin-top:2px;">Primescan</div>
           </div>
-          <div style="background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:12px 8px;text-align:center;">
+          <div style="background:linear-gradient(160deg,#fff,#F5FFFE);border:1.5px solid rgba(10,191,163,0.18);box-shadow:0 2px 10px rgba(10,22,40,0.05);border-radius:14px;padding:12px 8px;text-align:center;">
             <div style="height:72px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:8px;">
               <img src="https://image.rolanddga.com/-/media/roland-dg/images/products/dental/dwx-53d/banner/dgshape-dwx53d-banner-mobile.jpg" alt="밀링머신" style="max-height:68px;max-width:100%;object-fit:contain;">
             </div>
             <div style="font-size:0.72rem;font-weight:800;color:var(--navy);line-height:1.3;">밀링 머신</div>
             <div style="font-size:0.65rem;color:var(--sub2);margin-top:2px;">Roland DWX-53D</div>
           </div>
-          <div style="background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:12px 8px;text-align:center;">
+          <div style="background:linear-gradient(160deg,#fff,#F5FFFE);border:1.5px solid rgba(10,191,163,0.18);box-shadow:0 2px 10px rgba(10,22,40,0.05);border-radius:14px;padding:12px 8px;text-align:center;">
             <div style="height:72px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:8px;">
               <img src="https://www.zeiss.com/content/dam/med-hcp/reference-master/product-portfolio/surgical-microscopes/opmi-proergo/images/zeiss-opmi-proergo-dental.jpg" alt="수술현미경" style="max-height:68px;max-width:100%;object-fit:contain;">
             </div>
             <div style="font-size:0.72rem;font-weight:800;color:var(--navy);line-height:1.3;">수술 현미경</div>
             <div style="font-size:0.65rem;color:var(--sub2);margin-top:2px;">Zeiss OPMI</div>
           </div>
-          <div style="background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:12px 8px;text-align:center;">
+          <div style="background:linear-gradient(160deg,#fff,#F5FFFE);border:1.5px solid rgba(10,191,163,0.18);box-shadow:0 2px 10px rgba(10,22,40,0.05);border-radius:14px;padding:12px 8px;text-align:center;">
             <div style="height:72px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:8px;">
               <img src="https://dental-media.formlabs.com/filer_public/58/11/581180b0-5c2e-4b0b-8452-145b052ef6f6/11042019_f3_sg_023.jpg" alt="3D 프린터" style="max-height:68px;max-width:100%;object-fit:contain;">
             </div>

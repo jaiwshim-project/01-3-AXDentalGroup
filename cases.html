@@ -16,18 +16,18 @@
     .nav{background:rgba(244,248,253,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);position:fixed;top:0;left:0;right:0;z-index:100;}
     .nav-link{color:var(--sub);font-size:0.85rem;font-weight:500;transition:color .2s;cursor:pointer;text-decoration:none;}
     .nav-link:hover,.nav-link.nav-active{color:var(--teal);font-weight:700;}
-    .btn-cta-nav{background:linear-gradient(135deg,#0ABFA3,#1E6FBF);color:#fff;font-weight:700;font-size:0.82rem;border:none;border-radius:9px;padding:9px 20px;cursor:pointer;box-shadow:0 2px 12px rgba(10,191,163,0.25);transition:box-shadow .2s,transform .2s;text-decoration:none;display:inline-block;}
+    .btn-cta-nav{background:linear-gradient(135deg,#0ABFA3,#1E6FBF);color:#fff;font-weight:700;font-size:0.82rem;border:1.5px solid rgba(255,255,255,0.3);border-radius:9px;padding:9px 20px;cursor:pointer;box-shadow:0 2px 12px rgba(10,191,163,0.25);transition:box-shadow .2s,transform .2s;text-decoration:none;display:inline-block;}
     .btn-cta-nav:hover{box-shadow:0 4px 18px rgba(10,191,163,0.35);transform:translateY(-1px);}
-    .page-hero{background:linear-gradient(160deg,#F0F7FF 0%,#FAFCFF 40%,#F0FAF8 100%);padding:130px 0 80px;position:relative;overflow:hidden;}
+    .page-hero{background:linear-gradient(160deg,#E6EFF9 0%,#F5FFFE 50%,#E8F8F5 100%);padding:130px 0 80px;position:relative;overflow:hidden;}
     .page-hero-dot{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,rgba(10,191,163,0.10) 1.5px,transparent 1.5px);background-size:32px 32px;}
     .section{padding:90px 0;}
-    .section-alt{background:var(--bg);}
+    .section-alt{background:linear-gradient(160deg,#EDF4FB 0%,#F0FAF8 100%);}
     .container{max-width:1160px;margin:0 auto;padding:0 24px;}
     .eyebrow{font-size:0.7rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:10px;}
     .sec-title{font-size:clamp(1.9rem,3vw,2.7rem);font-weight:900;color:var(--navy);letter-spacing:-0.03em;line-height:1.18;}
     .sec-desc{font-size:0.97rem;color:var(--sub);line-height:1.82;margin-top:12px;}
     .divider{width:48px;height:3px;background:linear-gradient(90deg,#0ABFA3,#1E6FBF);border-radius:3px;margin:14px 0;}
-    .case-card{background:#fff;border-radius:24px;overflow:hidden;border:1.5px solid var(--border);box-shadow:0 4px 28px rgba(10,22,40,0.07);transition:transform .25s,box-shadow .25s;}
+    .case-card{background:#fff;border-radius:24px;overflow:hidden;border:1.5px solid rgba(10,191,163,0.18);box-shadow:0 6px 28px rgba(10,22,40,0.08);transition:transform .25s,box-shadow .25s;}
     .case-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(10,22,40,0.11);}
     .case-head{padding:32px;background:linear-gradient(135deg,var(--navy),#162540);position:relative;overflow:hidden;}
     .case-head::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#0ABFA3,#1E6FBF);}
@@ -52,9 +52,9 @@
     .impact-num{font-size:2.1rem;font-weight:900;color:var(--navy);letter-spacing:-0.03em;line-height:1;}
     .impact-num em{color:var(--teal);font-style:normal;}
     .impact-label{font-size:0.78rem;color:var(--sub);margin-top:6px;line-height:1.5;font-weight:600;}
-    .slide-img-box{border-radius:18px;overflow:hidden;box-shadow:0 8px 48px rgba(10,22,40,.10);border:1px solid var(--border);margin-bottom:22px;}
+    .slide-img-box{border-radius:18px;overflow:hidden;box-shadow:0 12px 48px rgba(10,22,40,0.12);border:1.5px solid rgba(10,191,163,0.2);margin-bottom:22px;}
     .slide-img-box img{width:100%;display:block;}
-    .slide-caption{background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px 28px;font-size:.94rem;color:var(--sub);line-height:1.88;box-shadow:0 2px 10px rgba(10,22,40,.04);}
+    .slide-caption{background:linear-gradient(160deg,#fff,#F5FFFE);border:1px solid rgba(10,191,163,0.18);border-left:3px solid var(--teal);border-radius:14px;padding:22px 28px;font-size:.94rem;color:var(--sub);line-height:1.88;box-shadow:0 4px 20px rgba(10,22,40,0.06);}
     .slide-caption strong{color:var(--navy);}
     .slide-eyebrow{font-size:.68rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin-bottom:8px;}
     .slide-title{font-size:1.12rem;font-weight:900;color:var(--navy);letter-spacing:-.02em;margin-bottom:16px;}
@@ -63,7 +63,18 @@
     .footer-link:hover{color:#0ABFA3;}
     .fu{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease;}
     .fu.vis{opacity:1;transform:translateY(0);}
-    @media(max-width:768px){.section{padding:60px 0;}.case-head{padding:24px 20px;}.case-body{padding:20px 20px 24px;}.slide-caption{padding:16px 20px;}}
+    @media(max-width:768px){
+      .section{padding:50px 0;}
+      .page-hero{padding:90px 0 48px;}
+      .sec-title{font-size:1.6rem;}
+      .case-head{padding:24px 20px;}
+      .case-body{padding:20px 20px 24px;}
+      .slide-caption{padding:16px 20px;font-size:0.82rem;line-height:1.7;}
+      .btn-primary,.btn-secondary{width:100%;justify-content:center;}
+      /* Footer */
+      .footer-bg .flex.flex-col.md\\:flex-row{flex-direction:column;gap:32px;}
+      img{max-width:100%;height:auto;}
+    }
   </style>
 </head>
 <body>
@@ -267,7 +278,7 @@
       <p class="sec-desc mx-auto" style="max-width:480px;">첫 도입 병원에게는 무료 파일럿 프로그램을 제공합니다. 지금 신청하세요.</p>
       <div class="flex gap-4 justify-center mt-8 flex-wrap">
         <a href="contact.html" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#0ABFA3,#1E6FBF);color:#fff;font-weight:700;font-size:0.9rem;border-radius:12px;padding:14px 30px;text-decoration:none;box-shadow:0 4px 20px rgba(10,191,163,0.28);">파일럿 신청하기 →</a>
-        <a href="../12-4 디지털스마일치과/proposal.html" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--navy);font-weight:600;font-size:0.9rem;border-radius:12px;padding:14px 28px;border:1.5px solid var(--border);text-decoration:none;">협업 제안서 보기</a>
+        <a href="../12-4 디지털스마일치과/proposal.html" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#F5F9FF,#EBF3FD);color:var(--navy);font-weight:600;font-size:0.9rem;border-radius:12px;padding:14px 28px;border:1.5px solid rgba(30,111,191,0.28);text-decoration:none;">협업 제안서 보기</a>
       </div>
     </div>
   </div>
