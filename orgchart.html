@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>조직도 — AX덴탈그룹</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Pretendard','Noto Sans KR',sans-serif;background:#fff;color:#0A1628;-webkit-font-smoothing:antialiased;}
+    :root{--navy:#0A1628;--navy2:#162540;--teal:#0ABFA3;--teal-light:#E6FAF7;--blue:#1E6FBF;--blue-light:#EBF3FD;--sub:#243B55;--sub2:#3D5570;--border:#E4EAF2;--bg:#F7F9FC;}
+    .nav{background:rgba(244,248,253,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);position:fixed;top:0;left:0;right:0;z-index:100;}
+    .nav-link{color:var(--sub);font-size:0.85rem;font-weight:500;transition:color .2s;cursor:pointer;text-decoration:none;}
+    .nav-link:hover,.nav-link.nav-active{color:var(--teal);font-weight:700;}
+    .btn-cta-nav{background:linear-gradient(135deg,#0ABFA3,#1E6FBF);color:#fff;font-weight:700;font-size:0.82rem;border:none;border-radius:9px;padding:9px 20px;cursor:pointer;box-shadow:0 2px 12px rgba(10,191,163,0.25);transition:box-shadow .2s,transform .2s;text-decoration:none;display:inline-block;}
+    .btn-cta-nav:hover{box-shadow:0 4px 18px rgba(10,191,163,0.35);transform:translateY(-1px);}
+    .page-hero{background:linear-gradient(160deg,#F0F7FF 0%,#FAFCFF 40%,#F0FAF8 100%);padding:130px 0 80px;position:relative;overflow:hidden;}
+    .page-hero-dot{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,rgba(10,191,163,0.10) 1.5px,transparent 1.5px);background-size:32px 32px;}
+    .section{padding:90px 0;}
+    .section-alt{background:var(--bg);}
+    .container{max-width:1160px;margin:0 auto;padding:0 24px;}
+    .eyebrow{font-size:0.7rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:10px;}
+    .sec-title{font-size:clamp(1.9rem,3vw,2.7rem);font-weight:900;color:var(--navy);letter-spacing:-0.03em;line-height:1.18;}
+    .sec-desc{font-size:0.97rem;color:var(--sub);line-height:1.82;margin-top:12px;}
+    .divider{width:48px;height:3px;background:linear-gradient(90deg,#0ABFA3,#1E6FBF);border-radius:3px;margin:14px 0;}
+    .footer-bg{background:#1A3050;border-top:1px solid rgba(255,255,255,0.05);}
+    .footer-link{font-size:0.82rem;color:rgba(255,255,255,0.88);cursor:pointer;transition:color .2s;display:block;margin-bottom:6px;text-decoration:none;}
+    .footer-link:hover{color:#0ABFA3;}
+    .fu{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease;}
+    .fu.vis{opacity:1;transform:translateY(0);}
+
+    /* ── Org Tree ── */
+    .org-wrap{display:flex;flex-direction:column;align-items:center;gap:0;margin:52px auto 0;max-width:640px;}
+    .org-root{background:linear-gradient(135deg,#0ABFA3,#1E6FBF);color:#fff;border-radius:16px;padding:16px 44px;font-size:1rem;font-weight:800;letter-spacing:0.04em;box-shadow:0 4px 24px rgba(10,191,163,0.28);text-align:center;}
+    .org-vline{width:2px;height:32px;background:#CBD5E1;}
+    .org-hrow{display:flex;align-items:flex-start;}
+    .org-branch{display:flex;flex-direction:column;align-items:center;width:200px;}
+    .org-hbar{width:100%;height:2px;background:#CBD5E1;}
+    .org-vshort{width:2px;height:20px;background:#CBD5E1;}
+    .org-node{background:#fff;border:2px solid var(--teal);border-radius:12px;padding:12px 24px;font-size:0.88rem;font-weight:700;color:var(--navy);text-align:center;box-shadow:0 2px 12px rgba(10,191,163,0.12);width:170px;}
+    .org-gap{width:80px;}
+
+    /* ── Profile Card ── */
+    .profile-card{display:grid;grid-template-columns:260px 1fr;gap:52px;align-items:start;max-width:960px;margin:0 auto;}
+    .profile-card.rev{grid-template-columns:1fr 260px;}
+    .profile-card.rev .photo-col{order:2;}
+    .profile-card.rev .info-col{order:1;}
+    .photo-col{text-align:center;}
+    .photo-frame{width:210px;height:250px;border-radius:20px;overflow:hidden;margin:0 auto 14px;box-shadow:0 8px 32px rgba(10,22,40,0.14);border:3px solid var(--teal-light);}
+    .photo-frame img{width:100%;height:100%;object-fit:cover;object-position:top center;}
+    .award-badge{display:inline-block;background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;font-size:0.7rem;font-weight:600;padding:6px 14px;border-radius:20px;line-height:1.5;max-width:210px;}
+    .role-pill{display:inline-block;background:var(--teal-light);color:var(--teal);font-size:0.75rem;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:14px;border:1px solid rgba(10,191,163,0.2);}
+    .profile-name{font-size:2rem;font-weight:900;color:var(--navy);letter-spacing:-0.03em;margin-bottom:4px;}
+    .profile-sub{font-size:0.88rem;color:var(--sub2);margin-bottom:18px;}
+    .profile-desc{font-size:0.91rem;color:var(--sub);line-height:1.8;margin-bottom:18px;}
+    .career-list{list-style:none;padding:0;margin:0 0 22px;display:flex;flex-direction:column;gap:7px;}
+    .career-list li{display:flex;align-items:baseline;gap:10px;font-size:0.84rem;color:var(--sub);line-height:1.5;}
+    .career-list li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:5px;}
+    .media-links{display:flex;flex-direction:column;gap:8px;}
+    .media-card{display:flex;align-items:center;gap:12px;background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:11px 14px;text-decoration:none;transition:border-color .2s,box-shadow .2s;}
+    .media-card:hover{border-color:var(--teal);box-shadow:0 4px 14px rgba(10,191,163,0.1);}
+    .media-card-icon{font-size:1.2rem;flex-shrink:0;}
+    .media-card-text strong{display:block;font-size:0.81rem;font-weight:700;color:var(--navy);}
+    .media-card-text span{font-size:0.74rem;color:var(--sub2);}
+
+    @media(max-width:768px){
+      .section{padding:60px 0;}
+      .profile-card,.profile-card.rev{grid-template-columns:1fr;}
+      .profile-card.rev .photo-col,.profile-card.rev .info-col{order:unset;}
+      .org-gap{display:none;}
+      .org-hrow{flex-direction:column;align-items:center;gap:12px;}
+      .org-hbar{display:none;}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container">
+    <div class="flex items-center justify-between h-16">
+      <a href="index.html"><img src="로고-AX 덴탈그룹.png" alt="AX Dental Group" style="height:36px;object-fit:contain;"></a>
+      <div class="hidden md:flex items-center gap-6">
+        <a class="nav-link" href="index.html">홈</a>
+        <a class="nav-link" href="platform.html">플랫폼 소개</a>
+        <a class="nav-link" href="services.html">AI 서비스</a>
+        <a class="nav-link" href="cases.html">도입 사례</a>
+        <a class="nav-link" href="market.html">시장 기회</a>
+        <a class="nav-link nav-active" href="orgchart.html">조직도</a>
+        <a class="nav-link" href="../12-4 디지털스마일치과/proposal.html" target="_blank">협업 제안서</a>
+        <a class="btn-cta-nav" href="contact.html">도입 문의</a>
+      </div>
+      <button class="md:hidden text-gray-600" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden pb-4 border-t" style="border-color:var(--border);">
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="index.html">홈</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="platform.html">플랫폼 소개</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="services.html">AI 서비스</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="cases.html">도입 사례</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="market.html">시장 기회</a>
+      <a class="block py-2.5 text-sm font-bold" style="color:var(--teal);border-bottom:1px solid var(--border);" href="orgchart.html">조직도</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="../12-4 디지털스마일치과/proposal.html" target="_blank">협업 제안서</a>
+      <a class="block py-2.5 text-sm font-bold" style="color:var(--teal);" href="contact.html">도입 문의</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-dot"></div>
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="fu">
+      <div class="eyebrow">Organization</div>
+      <h1 class="sec-title" style="font-size:clamp(2.2rem,4vw,3.5rem);">AX덴탈그룹<br><span style="background:linear-gradient(90deg,#0ABFA3,#1E6FBF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">핵심 리더십</span></h1>
+      <div class="divider"></div>
+      <p class="sec-desc" style="max-width:480px;">치과 산업의 AI 혁신을 이끄는 두 리더의 30년 + 40년 현장 경험이 AX덴탈그룹의 경쟁력입니다.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ORG CHART -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="text-center fu">
+      <div class="eyebrow">Org Chart</div>
+      <h2 class="sec-title" style="font-size:1.9rem;">조직 구조</h2>
+      <div class="divider mx-auto"></div>
+    </div>
+    <div class="org-wrap fu" style="transition-delay:.1s">
+      <div class="org-root">AX덴탈그룹 · DentalClinicFinder</div>
+      <div class="org-vline"></div>
+      <div class="org-hrow">
+        <div class="org-branch">
+          <div class="org-hbar"></div>
+          <div class="org-vshort"></div>
+          <div class="org-node">심재우 대표 (CEO)</div>
+        </div>
+        <div class="org-gap"></div>
+        <div class="org-branch">
+          <div class="org-hbar"></div>
+          <div class="org-vshort"></div>
+          <div class="org-node">이용식 CMO</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 심재우 대표 -->
+<section class="section">
+  <div class="container">
+    <div class="profile-card fu">
+      <div class="photo-col">
+        <div class="photo-frame">
+          <img src="../13. 치과/13-1  화이트서울치과/images/coach-shim.jpg" alt="심재우 대표">
+        </div>
+        <div class="award-badge">Marquis Who's Who in the World<br>2016, 2020 (2회 등재)</div>
+      </div>
+      <div class="info-col">
+        <div class="role-pill">CEO · 대표</div>
+        <div class="profile-name">심재우</div>
+        <div class="profile-sub">AX덴탈그룹 · DentalClinicFinder 대표</div>
+        <p class="profile-desc">치과 경영 컨설팅 전문가로서 수많은 치과의 디지털 전환과 신뢰 시스템 구축을 성공적으로 이끌어온 경험을 보유하고 있습니다. 기계공학적 구조 분석 역량과 30년 B2B 세일즈 경험을 접목해 치과 산업만의 AI 운영 시스템을 설계했습니다.</p>
+        <ul class="career-list">
+          <li>기계공학 석사 (구조해석 & 디지털트윈)</li>
+          <li>현대자동차 기술연구소 (5년)</li>
+          <li>General Electric (8년)</li>
+          <li>에스비컨설팅 (30년)</li>
+          <li>8개국 B2B세일즈 국제공인 마스터트레이너</li>
+          <li>Marquis Who's Who in the World 등재 (2016, 2020) 2회</li>
+          <li>QLRCQ 상담 엔진 개발자</li>
+          <li>DF-AI 신용점수 시스템 설계자</li>
+          <li>5단계 상담 모델 창시자</li>
+          <li>다수 치과 디지털 전환 컨설팅 수행</li>
+        </ul>
+        <div class="media-links">
+          <a href="https://www.ibrandnews.com/news/articleView.html?idxno=11415" target="_blank" rel="noopener noreferrer" class="media-card">
+            <span class="media-card-icon">📰</span>
+            <div class="media-card-text">
+              <strong>브랜드뉴스 : 치과의료의 새로운 미래</strong>
+              <span>AI, 기술을 넘어 신뢰를 설계하다</span>
+            </div>
+          </a>
+          <a href="https://www.ibrandnews.com/news/articleView.html?idxno=10530" target="_blank" rel="noopener noreferrer" class="media-card">
+            <span class="media-card-icon">📰</span>
+            <div class="media-card-text">
+              <strong>브랜드뉴스 : AI 예술 융합 공간으로 진화!</strong>
+              <span>첨단 기술로 예술 감상의 새 지평 열다</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 이용식 CMO -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="profile-card rev fu">
+      <div class="photo-col">
+        <div class="photo-frame">
+          <img src="../13. 치과/13-1  화이트서울치과/AI갤러리/이용식 CMO.png" alt="이용식 CMO">
+        </div>
+        <div class="award-badge">전 한국치과의료기기산업협회<br>제13대 회장 (2015–2017)</div>
+      </div>
+      <div class="info-col">
+        <div class="role-pill">CMO · 최고마케팅책임자</div>
+        <div class="profile-name">이용식</div>
+        <div class="profile-sub">AX덴탈그룹 · DentalClinicFinder CMO</div>
+        <p class="profile-desc">40년 치과 재료 영업·유통 경력의 치과산업 전문가로서 업계 발전에 기여해왔습니다. 독일·일본 기술 제휴와 국내 기술 이전을 주도하며 한국 치과산업의 글로벌 경쟁력을 높였습니다.</p>
+        <ul class="career-list">
+          <li>(주)네오프란트 대표이사</li>
+          <li>중앙대학교 신문방송학과 졸업</li>
+          <li>한국치과의료기기산업협회 제13대 회장 (2015–2017)</li>
+          <li>한국치과의료기기산업협회 제10·11·12대 부회장</li>
+          <li>대전·충청지부장 역임</li>
+          <li>국립치의학연구원 설립 추진위원</li>
+          <li>독일·일본 기술 제휴 및 국내 기술 이전 주도</li>
+          <li>자체 합금 브랜드 '골드윈(Goldwin)' 개발</li>
+          <li>예방치과 브랜드 '뽀식이와 아거새' 런칭</li>
+          <li>대한민국 문화예술대상 치의학 산업부문 최고 공로대상 (2014)</li>
+          <li>대전광역시장 표창</li>
+        </ul>
+        <div class="media-links">
+          <a href="https://www.ibrandnews.com/news/articleView.html?idxno=11506" target="_blank" rel="noopener noreferrer" class="media-card">
+            <span class="media-card-icon">📰</span>
+            <div class="media-card-text">
+              <strong>브랜드뉴스 : 세 리더, 하나의 비전</strong>
+              <span>이용식 CMO가 심재우 대표와 '신뢰'로 치과 산업의 판도를 바꾸는 방법</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer-bg" style="padding:48px 0 32px;">
+  <div class="container">
+    <div class="flex flex-col md:flex-row justify-between gap-10">
+      <div>
+        <a href="index.html"><img src="로고-AX 덴탈그룹.png" alt="AX Dental Group" style="height:34px;object-fit:contain;margin-bottom:16px;display:block;"></a>
+        <p style="font-size:0.82rem;color:rgba(255,255,255,0.85);line-height:1.8;max-width:240px;">치과 산업 AI 혁신을 선도합니다.<br>"AI가 운영하는 치과"를 함께 만들어 갑니다.</p>
+      </div>
+      <div class="flex gap-14">
+        <div>
+          <div style="font-size:0.7rem;font-weight:800;color:rgba(255,255,255,0.85);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px;">메뉴</div>
+          <a class="footer-link" href="platform.html">플랫폼 소개</a>
+          <a class="footer-link" href="services.html">AI 서비스</a>
+          <a class="footer-link" href="cases.html">도입 사례</a>
+          <a class="footer-link" href="market.html">시장 기회</a>
+          <a class="footer-link" href="orgchart.html">조직도</a>
+          <a class="footer-link" href="../12-4 디지털스마일치과/proposal.html" target="_blank">협업 제안서</a>
+        </div>
+        <div>
+          <div style="font-size:0.7rem;font-weight:800;color:rgba(255,255,255,0.85);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px;">문의</div>
+          <a class="footer-link" href="contact.html">도입 문의</a>
+          <a class="footer-link" href="cases.html">파트너 사례</a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.12);margin-top:40px;padding-top:22px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;">
+      <p style="font-size:0.73rem;color:rgba(255,255,255,0.7);">© 2025 AX덴탈그룹. All rights reserved.</p>
+      <p style="font-size:0.73rem;color:rgba(255,255,255,0.7);">Powered by <span style="color:#0ABFA3;font-weight:700;">AI</span></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fu').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

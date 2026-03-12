@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 서비스 — AX덴탈그룹</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Pretendard','Noto Sans KR',sans-serif;background:#fff;color:#0A1628;-webkit-font-smoothing:antialiased;}
+    :root{--navy:#0A1628;--navy2:#162540;--teal:#0ABFA3;--teal-light:#E6FAF7;--blue:#1E6FBF;--blue-light:#EBF3FD;--gold:#B8960C;--gold-light:#FBF7E8;--sub:#243B55;--sub2:#3D5570;--border:#E4EAF2;--bg:#F7F9FC;}
+    .nav{background:rgba(244,248,253,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);position:fixed;top:0;left:0;right:0;z-index:100;}
+    .nav-link{color:var(--sub);font-size:0.85rem;font-weight:500;transition:color .2s;cursor:pointer;text-decoration:none;}
+    .nav-link:hover,.nav-link.nav-active{color:var(--teal);font-weight:700;}
+    .btn-cta-nav{background:linear-gradient(135deg,#0ABFA3,#1E6FBF);color:#fff;font-weight:700;font-size:0.82rem;border:none;border-radius:9px;padding:9px 20px;cursor:pointer;box-shadow:0 2px 12px rgba(10,191,163,0.25);transition:box-shadow .2s,transform .2s;text-decoration:none;display:inline-block;}
+    .btn-cta-nav:hover{box-shadow:0 4px 18px rgba(10,191,163,0.35);transform:translateY(-1px);}
+    .page-hero{background:linear-gradient(160deg,#F0F7FF 0%,#FAFCFF 40%,#F0FAF8 100%);padding:130px 0 80px;position:relative;overflow:hidden;}
+    .page-hero-dot{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,rgba(10,191,163,0.10) 1.5px,transparent 1.5px);background-size:32px 32px;}
+    .section{padding:90px 0;}
+    .section-alt{background:var(--bg);}
+    .container{max-width:1160px;margin:0 auto;padding:0 24px;}
+    .eyebrow{font-size:0.7rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:10px;}
+    .sec-title{font-size:clamp(1.9rem,3vw,2.7rem);font-weight:900;color:var(--navy);letter-spacing:-0.03em;line-height:1.18;}
+    .sec-desc{font-size:0.97rem;color:var(--sub);line-height:1.82;margin-top:12px;}
+    .divider{width:48px;height:3px;background:linear-gradient(90deg,#0ABFA3,#1E6FBF);border-radius:3px;margin:14px 0;}
+    .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+    @media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:560px){.svc-grid{grid-template-columns:1fr;}}
+    .svc-card{background:#fff;border-radius:20px;padding:30px;border:1.5px solid var(--border);box-shadow:0 2px 16px rgba(10,22,40,0.04);transition:transform .25s,box-shadow .25s,border-color .25s;position:relative;overflow:hidden;}
+    .svc-card:hover{transform:translateY(-5px);box-shadow:0 14px 40px rgba(10,22,40,0.09);border-color:rgba(10,191,163,0.35);}
+    .svc-top-bar{position:absolute;top:0;left:0;right:0;height:3px;}
+    .stb-1{background:linear-gradient(90deg,#0ABFA3,#1E6FBF);}
+    .stb-2{background:linear-gradient(90deg,#1E6FBF,#3B4FD8);}
+    .stb-3{background:linear-gradient(90deg,#3B4FD8,#0ABFA3);}
+    .stb-4{background:linear-gradient(90deg,#0ABFA3,#10b981);}
+    .stb-5{background:linear-gradient(90deg,#E0A500,#ef4444);}
+    .stb-6{background:linear-gradient(90deg,#a855f7,#1E6FBF);}
+    .svc-icon-wrap{width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:16px;}
+    .si1{background:#E6FAF7;}.si2{background:#EBF3FD;}.si3{background:#F0EEFF;}.si4{background:#ECFDF5;}.si5{background:#FFFBEB;}.si6{background:#F5F3FF;}
+    .svc-title{font-size:1.02rem;font-weight:800;color:var(--navy);letter-spacing:-0.01em;margin-bottom:8px;}
+    .svc-desc{font-size:0.83rem;color:var(--sub);line-height:1.78;}
+    .svc-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:14px;}
+    .tag{font-size:0.66rem;font-weight:700;padding:3px 9px;border-radius:6px;letter-spacing:0.03em;}
+    .tag-t{background:#E6FAF7;color:#089B83;border:1px solid rgba(10,191,163,0.2);}
+    .tag-b{background:#EBF3FD;color:#1A5FA8;border:1px solid rgba(30,111,191,0.2);}
+    .tag-v{background:#F0EEFF;color:#5B4FE9;border:1px solid rgba(91,79,233,0.2);}
+    .tag-g{background:#FBF7E8;color:#9A7A00;border:1px solid rgba(184,150,12,0.2);}
+    .slide-img-box{border-radius:18px;overflow:hidden;box-shadow:0 8px 48px rgba(10,22,40,.10);border:1px solid var(--border);margin-bottom:22px;}
+    .slide-img-box img{width:100%;display:block;}
+    .slide-caption{background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px 28px;font-size:.94rem;color:var(--sub);line-height:1.88;box-shadow:0 2px 10px rgba(10,22,40,.04);}
+    .slide-caption strong{color:var(--navy);}
+    .slide-eyebrow{font-size:.68rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin-bottom:8px;}
+    .slide-title{font-size:1.12rem;font-weight:900;color:var(--navy);letter-spacing:-.02em;margin-bottom:16px;}
+    .footer-bg{background:#1A3050;border-top:1px solid rgba(255,255,255,0.05);}
+    .footer-link{font-size:0.82rem;color:rgba(255,255,255,0.88);cursor:pointer;transition:color .2s;display:block;margin-bottom:6px;text-decoration:none;}
+    .footer-link:hover{color:#0ABFA3;}
+    .fu{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease;}
+    .fu.vis{opacity:1;transform:translateY(0);}
+    @media(max-width:768px){.section{padding:60px 0;}.slide-caption{padding:16px 20px;}}
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container">
+    <div class="flex items-center justify-between h-16">
+      <a href="index.html"><img src="로고-AX 덴탈그룹.png" alt="AX Dental Group" style="height:36px;object-fit:contain;"></a>
+      <div class="hidden md:flex items-center gap-6">
+        <a class="nav-link" href="index.html">홈</a>
+        <a class="nav-link" href="platform.html">플랫폼 소개</a>
+        <a class="nav-link nav-active" href="services.html">AI 서비스</a>
+        <a class="nav-link" href="cases.html">도입 사례</a>
+        <a class="nav-link" href="market.html">시장 기회</a>
+        <a class="nav-link" href="orgchart.html">조직도</a>
+        <a class="nav-link" href="../12-4 디지털스마일치과/proposal.html" target="_blank">협업 제안서</a>
+        <a class="btn-cta-nav" href="contact.html">도입 문의</a>
+      </div>
+      <button class="md:hidden text-gray-600" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden pb-4 border-t" style="border-color:var(--border);">
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="index.html">홈</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="platform.html">플랫폼 소개</a>
+      <a class="block py-2.5 text-sm font-bold" style="color:var(--teal);border-bottom:1px solid var(--border);" href="services.html">AI 서비스</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="cases.html">도입 사례</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="market.html">시장 기회</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="orgchart.html">조직도</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="../12-4 디지털스마일치과/proposal.html" target="_blank">협업 제안서</a>
+      <a class="block py-2.5 text-sm font-bold" style="color:var(--teal);" href="contact.html">도입 문의</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-dot"></div>
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="fu">
+      <div class="eyebrow">AI Services</div>
+      <h1 class="sec-title" style="font-size:clamp(2.2rem,4vw,3.5rem);">6대 AI 엔진<br><span style="background:linear-gradient(90deg,#0ABFA3,#1E6FBF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">AI 서비스 상세</span></h1>
+      <div class="divider"></div>
+      <p class="sec-desc" style="max-width:580px;">치과의 모든 접점을 커버하는 6대 AI 엔진. 진단부터 경영·마케팅·수익까지 치과 운영 전 영역을 AI로 자동화합니다.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- SERVICE CARDS -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="text-center mb-12 fu">
+      <div class="eyebrow">Core Solutions</div>
+      <h2 class="sec-title">6가지 핵심 AI 서비스</h2>
+      <div class="divider mx-auto"></div>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card fu">
+        <div class="svc-top-bar stb-1"></div>
+        <div class="svc-icon-wrap si1">🩺</div>
+        <div class="svc-title">AI 구강 진단 리포트</div>
+        <div class="svc-desc">파노라마·CT 데이터를 AI가 분석해 환자 맞춤형 진단 리포트를 자동 생성합니다. 충치·임플란트 필요성·치주 상태를 시각적으로 전달해 치료 동의율을 높입니다.</div>
+        <div class="svc-tags"><span class="tag tag-t">임상 AI</span><span class="tag tag-b">리포트 자동화</span></div>
+      </div>
+      <div class="svc-card fu" style="transition-delay:.07s">
+        <div class="svc-top-bar stb-2"></div>
+        <div class="svc-icon-wrap si2">📋</div>
+        <div class="svc-title">AI Treatment Story Engine</div>
+        <div class="svc-desc">환자의 CT를 업로드하면 AI가 치료 전·후 시각화 리포트를 자동 생성합니다. 환자는 직관적으로 상태를 이해하고 스스로 치료를 결정하게 됩니다.</div>
+        <div class="svc-tags"><span class="tag tag-b">치료 동의</span><span class="tag tag-v">시각화</span></div>
+      </div>
+      <div class="svc-card fu" style="transition-delay:.14s">
+        <div class="svc-top-bar stb-3"></div>
+        <div class="svc-icon-wrap si3">✍️</div>
+        <div class="svc-title">AI SEO·AIO 콘텐츠 자동화</div>
+        <div class="svc-desc">치과 특화 SEO 키워드 기반으로 블로그·SNS·유튜브 스크립트를 자동 생성합니다. 매월 일관된 고품질 콘텐츠로 네이버·구글 검색 상위 노출을 유지합니다.</div>
+        <div class="svc-tags"><span class="tag tag-v">마케팅 AI</span><span class="tag tag-t">SEO 최적화</span></div>
+      </div>
+      <div class="svc-card fu" style="transition-delay:.21s">
+        <div class="svc-top-bar stb-4"></div>
+        <div class="svc-icon-wrap si4">💰</div>
+        <div class="svc-title">AI 수익·경영 분석</div>
+        <div class="svc-desc">진료별 수익률을 AI가 분석해 어떤 진료에 집중해야 할지 알려줍니다. 재료비·체어타임·인건비까지 포함한 순수익 계산을 자동으로 제공합니다.</div>
+        <div class="svc-tags"><span class="tag tag-t">경영 AI</span><span class="tag tag-g">수익 최적화</span></div>
+      </div>
+      <div class="svc-card fu" style="transition-delay:.28s">
+        <div class="svc-top-bar stb-5"></div>
+        <div class="svc-icon-wrap si5">📅</div>
+        <div class="svc-title">AI 노쇼 예측·예방</div>
+        <div class="svc-desc">환자 데이터를 AI가 분석해 노쇼 가능성을 사전에 예측합니다. 고위험 환자에게 자동 리마인드 메시지를 발송해 노쇼율을 최대 40% 줄입니다.</div>
+        <div class="svc-tags"><span class="tag tag-b">예약 AI</span><span class="tag tag-v">자동 대응</span></div>
+      </div>
+      <div class="svc-card fu" style="transition-delay:.35s">
+        <div class="svc-top-bar stb-6"></div>
+        <div class="svc-icon-wrap si6">🏥</div>
+        <div class="svc-title">AI 보험 청구 최적화</div>
+        <div class="svc-desc">AI가 청구 누락 항목을 자동으로 탐지합니다. 평균 연간 3,000만 원 이상의 청구 누락을 발견한 사례가 있습니다. 복잡한 보험 규정도 AI가 실시간 검토합니다.</div>
+        <div class="svc-tags"><span class="tag tag-v">보험 AI</span><span class="tag tag-t">누락 탐지</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SLIDE 18 -->
+<section class="section">
+  <div class="container">
+    <div class="fu">
+      <div class="slide-eyebrow">6 AI Engines</div>
+      <div class="slide-title">치과의 모든 접점을 지배하는 6대 AI 엔진</div>
+      <div class="slide-img-box"><img src="AX덴탈그룹 소개자료/슬라이드18.PNG" alt="6대 AI 엔진"></div>
+      <div class="slide-caption"><p>AX Dental OS의 6대 AI 엔진은 치과의 모든 핵심 접점을 커버합니다. 각 엔진은 독립적으로 작동하는 동시에 통합 데이터 플랫폼을 통해 서로 연동되어 강력한 시너지를 만들어냅니다.<br><br><strong>① Diagnostic AI(영상 진단)</strong>: CT·파노라마·구강 영상을 AI가 분석하여 충치, 치주 질환, 임플란트 적합성을 94.7% 정확도로 자동 탐지합니다. 분석 시간은 2.3초로, 기존 의사의 육안 분석 대비 10배 빠릅니다.<br><br><strong>② Treatment Story Engine(치료 동의)</strong>: CT 업로드만으로 환자 맞춤형 치료 전·후 시각화 리포트를 자동 생성합니다. 환자가 직관적으로 자신의 상태를 이해하고 치료를 스스로 결정하게 만들어 동의율을 33% 이상 향상시킵니다.<br><br><strong>③ Profit AI(수익 분석)</strong>: 진료별 실제 순수익(재료비·체어타임·인건비 포함)을 AI가 자동 계산합니다. 어떤 진료에 집중해야 수익이 극대화되는지 데이터로 알려줍니다.<br><br><strong>④ Patient LTV AI(환자 생애가치)</strong>: 환자 1인당 기대 생애가치를 분석합니다. 소개 환자(480만 원)와 일반 광고 환자(120만 원)의 4배 차이를 파악하여 마케팅 채널 예산을 최적화합니다.<br><br><strong>⑤ Appointment AI(예약 최적화)</strong>: 환자 데이터를 분석하여 노쇼 가능성이 높은 환자를 사전에 예측하고 자동 리마인드를 발송합니다. 노쇼율을 최대 40% 감소시킵니다.<br><br><strong>⑥ Insurance AI(보험 청구)</strong>: 청구 누락 항목을 AI가 자동 탐지합니다. 연간 평균 3,000만 원 이상의 청구 누락을 발견하여 즉각적인 매출 순증 효과를 실현합니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5 -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="fu">
+      <div class="slide-eyebrow">Clinical AI</div>
+      <div class="slide-title">Clinical & Patient AI: AI 구강 종합 진단 리포트</div>
+      <div class="slide-img-box"><img src="AX덴탈그룹 소개자료/슬라이드5.PNG" alt="Clinical & Patient AI"></div>
+      <div class="slide-caption"><p>AI 구강 종합 진단 리포트는 AX Dental OS의 Clinical AI 엔진이 만들어내는 핵심 결과물입니다. 환자의 CT, 파노라마, 구강 영상 데이터를 AI가 2.3초 만에 분석하여 포괄적인 구강 건강 리포트를 자동 생성합니다. 분석 정확도는 <strong>94.7%</strong>로, 숙련된 치과의사의 판독 정확도와 동등한 수준입니다.<br><br>리포트에는 충치 위험도(부위별 세분화), 치주 건강 지수, 임플란트 적합성 점수, 치료 우선순위 추천이 포함됩니다. 모든 내용은 환자가 이해하기 쉬운 시각화 형태로 제공되어, 치과 전문 지식이 없는 환자도 자신의 구강 상태를 직관적으로 파악할 수 있습니다.<br><br>Clinical AI와 Patient AI의 결합이 만들어내는 가장 큰 변화는 <strong>치료 동의율의 극적인 향상</strong>입니다. 기존에는 원장이 구두로 설명하는 방식에 의존했기 때문에, 환자가 치료 필요성을 실감하기 어려웠습니다. AI 진단 리포트를 보여주면 환자는 객관적인 데이터로 자신의 상태를 확인하고, 치료 결정을 내리기가 훨씬 쉬워집니다.<br><br>특히 고단가 진료인 임플란트, 교정, 심미 치료 상담에서 효과가 두드러집니다. 실제 도입 치과에서는 임플란트 동의율이 기존 대비 45% 이상 향상되었습니다. 진단과 설득을 동시에 해결하는 Clinical & Patient AI는 AX Dental OS의 가장 강력한 경쟁 무기입니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6 -->
+<section class="section">
+  <div class="container">
+    <div class="fu">
+      <div class="slide-eyebrow">Predictive AI</div>
+      <div class="slide-title">데이터 기반의 미래 예측 시나리오</div>
+      <div class="slide-img-box"><img src="AX덴탈그룹 소개자료/슬라이드6.PNG" alt="데이터 기반 미래 예측 시나리오"></div>
+      <div class="slide-caption"><p>환자가 치료를 결정하지 못하는 가장 큰 이유 중 하나는 '치료 후 내 상태가 어떻게 달라질지 모른다'는 불확실성입니다. AX Dental의 <strong>예측 시뮬레이션 기능</strong>은 이 불확실성을 데이터로 해소합니다.<br><br>현재 구강 건강 점수 73점인 환자에게 치료 계획을 적용했을 때 예상 점수 94점으로 개선되는 시뮬레이션을 시각적으로 보여줍니다. 치아 색상 변화, 치주 건강 수준, 임플란트 완성 후 구강 구조까지 AI가 예측하여 '치료 전 vs 치료 후' 비교 이미지를 자동 생성합니다.<br><br>이 기능이 만들어내는 효과는 수치로 명확히 나타납니다. 예측 시뮬레이션을 제공한 경우 치료 동의율이 기존 대비 <strong>33% 이상 향상</strong>되었습니다. 특히 고관여 결정이 필요한 임플란트(300만~600만 원), 교정(200만~500만 원) 치료에서 효과가 극적으로 나타났습니다.<br><br>환자 만족도 측면에서도 긍정적입니다. '예상과 다르다'는 불만이 시뮬레이션 도입 후 크게 줄었고, 치료 완료 후 구전 마케팅(소개) 비율도 증가했습니다. 데이터 기반의 미래 예측은 환자의 신뢰를 높이고, 병원의 수익과 평판을 동시에 향상시키는 핵심 기능입니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 19 -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="fu">
+      <div class="slide-eyebrow">Treatment Story Engine</div>
+      <div class="slide-title">진단에서 치료 동의로: AI Treatment Story Engine</div>
+      <div class="slide-img-box"><img src="AX덴탈그룹 소개자료/슬라이드19.PNG" alt="AI Treatment Story Engine"></div>
+      <div class="slide-caption"><p>AI Treatment Story Engine은 AX Dental OS가 보유한 가장 혁신적인 환자 커뮤니케이션 솔루션입니다. 기존의 치료 설명 방식은 원장이 X-ray 사진을 가리키며 구두로 설명하는 방식에 전적으로 의존했습니다. 이 방식은 두 가지 근본적인 문제를 안고 있었습니다. 첫째, 의학 지식이 없는 환자가 이해하기 어렵습니다. 둘째, 원장의 설명 역량에 따라 치료 동의율이 크게 달라지는 불안정성이 있었습니다.<br><br>Treatment Story Engine은 이 두 문제를 모두 해결합니다. 환자의 CT 또는 파노라마 영상을 시스템에 업로드하면, AI가 자동으로 다음 세 가지를 생성합니다.<br><br>첫째, <strong>현재 상태 비주얼 리포트</strong>: 환자의 구강 상태를 부위별로 색상 코드화하여 문제 영역을 직관적으로 표시합니다.<br>둘째, <strong>치료 계획 스토리라인</strong>: 왜 이 치료가 필요한지, 치료 과정은 어떻게 진행되는지를 단계별로 시각화합니다.<br>셋째, <strong>치료 후 예측 이미지</strong>: 치료 완료 후 예상되는 구강 상태를 AI가 시뮬레이션하여 보여줍니다.<br><br>환자는 자신의 이야기를 직접 보고, 느끼고, 이해하게 됩니다. 그 결과 치료 동의율이 기존 대비 <strong>33% 이상 향상</strong>되었으며, 특히 고단가 치료인 임플란트와 교정 상담에서 효과가 가장 두드러집니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7 -->
+<section class="section">
+  <div class="container">
+    <div class="fu">
+      <div class="slide-eyebrow">Management AI</div>
+      <div class="slide-title">Management AI: 원장은 진료에, AI는 경영에</div>
+      <div class="slide-img-box"><img src="AX덴탈그룹 소개자료/슬라이드7.PNG" alt="Management AI"></div>
+      <div class="slide-caption"><p>Management AI는 치과 경영의 가장 큰 두 가지 고통 포인트 — 예약 노쇼와 보험 청구 누락 — 를 AI로 완전 해결합니다.<br><br><strong>노쇼 예측 및 자동 방어 시스템</strong>: 환자의 예약 이력, 결제 패턴, 상담 내용, 연락처 응답률 등 다양한 데이터 포인트를 AI가 분석하여 노쇼 가능성을 사전에 예측합니다. 노쇼 위험도가 높은 환자에게는 예약 24시간 전, 2시간 전에 맞춤형 리마인드 메시지를 자동 발송하고, 필요시 재확인 전화를 자동으로 예약합니다. 이 시스템의 도입 후 노쇼율이 평균 <strong>30~40% 감소</strong>했습니다.<br><br><strong>AI 보험 청구 최적화</strong>: 매월 수천 건의 진료 기록을 AI가 분석하여 청구 가능한 항목 중 누락된 것을 자동 탐지합니다. 복잡한 건강보험 규정을 AI가 실시간으로 검토하여 청구 오류와 누락을 방지합니다. 실제 도입 치과에서 연간 <strong>3,000만 원 이상</strong>의 청구 누락을 발견한 사례가 다수 있습니다.<br><br><strong>HR Analytics</strong>: 직원별 상담 성공률, 진료 처리 속도, 환자 만족도 등 성과 지표를 자동 분석합니다. 인력 운영의 비효율을 데이터로 파악하고, 교육이 필요한 영역을 정확히 짚어냅니다.<br><br>원장은 이제 데이터 대시보드 하나로 병원 경영 전체를 한눈에 파악하고, AI의 추천에 따라 실행만 승인하면 됩니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8 -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="fu">
+      <div class="slide-eyebrow">Growth AI</div>
+      <div class="slide-title">Growth AI & Data Lake: 성장의 자동화</div>
+      <div class="slide-img-box"><img src="AX덴탈그룹 소개자료/슬라이드8.PNG" alt="Growth AI & Data Lake"></div>
+      <div class="slide-caption"><p>치과 마케팅의 현실은 가혹합니다. 블로그 포스팅 하나를 작성하는 데 1~2시간이 소요되고, SEO 최적화와 키워드 분석은 전문 지식이 필요합니다. 월 10건의 콘텐츠를 생산하기 위해 마케팅 에이전시에 월 200~500만 원을 지불하는 치과도 많습니다. 그럼에도 불구하고 체계적인 온라인 마케팅을 유지하는 치과는 소수에 불과합니다.<br><br>Growth AI는 이 문제를 근본적으로 해결합니다. 치과 특화 SEO 키워드 데이터베이스와 AIO(AI Optimization) 기술을 결합하여, 검색 상위 노출에 최적화된 블로그·SNS·유튜브 스크립트를 자동 생성합니다. 월 50건 이상의 고품질 콘텐츠를 AI가 자동 생산하여, 기존 대비 <strong>10배의 콘텐츠 생산성</strong>을 실현합니다.<br><br><strong>통합 Data Lake</strong>는 Growth AI의 기반이자, AX Dental OS 전체의 지능을 높이는 핵심 인프라입니다. 모든 임상 데이터, 경영 데이터, 마케팅 성과 데이터가 Data Lake에 축적되며, 이 데이터가 AI 모델의 정확도를 지속적으로 향상시킵니다. 더 많은 치과가 AX Dental OS를 사용할수록 AI의 성능이 높아지는 <strong>네트워크 효과(Data Flywheel)</strong>가 발생하여, 경쟁사가 단기간에 따라올 수 없는 데이터 해자(Moat)가 만들어집니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 20 -->
+<section class="section">
+  <div class="container">
+    <div class="fu">
+      <div class="slide-eyebrow">Profit Intelligence</div>
+      <div class="slide-title">플랫폼의 진짜 핵심: AI Profit & Data Intelligence</div>
+      <div class="slide-img-box"><img src="AX덴탈그룹 소개자료/슬라이드20.PNG" alt="AI Profit & Data Intelligence"></div>
+      <div class="slide-caption"><p>AI Profit & Data Intelligence는 AX Dental OS의 경영 AI 중에서도 원장들이 가장 즉각적인 효과를 체감하는 기능입니다. '어떤 진료를 더 해야 돈을 버는가'라는 가장 본질적인 경영 질문에 데이터로 답합니다.<br><br><strong>진료별 수익 분석</strong>: 미백, 임플란트, 교정, 충치 치료, 스케일링 등 모든 진료 항목의 실제 순수익을 계산합니다. 재료비, 체어타임, 인건비 배분까지 고려한 정확한 수익성 분석을 통해, 예를 들어 '미백 진료 수익률이 90%로 임플란트(40%)보다 훨씬 높다'는 인사이트를 도출합니다. AI는 이를 바탕으로 미백 타깃 마케팅 강화를 자동 추천합니다.<br><br><strong>환자 LTV(생애가치) 분석</strong>: 소개 환자의 평균 LTV는 480만 원이지만, 일반 광고로 유입된 환자의 LTV는 120만 원에 불과합니다. 이 <strong>4배의 차이</strong>를 파악한 AI는 소개 마케팅 채널에 예산을 집중하고, 광고비 효율이 낮은 채널을 줄이도록 추천합니다.<br><br><strong>HR & 운영 분석</strong>: 직원별 상담 성공률 및 성과 분석 대시보드로 인력 운영의 숨겨진 비효율을 발견합니다. 데이터가 모든 의사결정을 내리고, 원장은 실행만 승인하는 이상적인 데이터 드리븐 경영이 실현됩니다.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA -->
+<section style="padding:80px 0;background:linear-gradient(160deg,#F0F7FF 0%,#F0FAF8 100%);">
+  <div class="container text-center">
+    <div class="fu">
+      <h2 class="sec-title mb-4">지금 바로 도입하세요</h2>
+      <p class="sec-desc mx-auto" style="max-width:480px;">48시간 내 병원 맞춤 AI 솔루션 제안서를 무료로 받아보세요.</p>
+      <div class="flex gap-4 justify-center mt-8 flex-wrap">
+        <a href="contact.html" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#0ABFA3,#1E6FBF);color:#fff;font-weight:700;font-size:0.9rem;border-radius:12px;padding:14px 30px;text-decoration:none;box-shadow:0 4px 20px rgba(10,191,163,0.28);">도입 문의하기 →</a>
+        <a href="cases.html" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--navy);font-weight:600;font-size:0.9rem;border-radius:12px;padding:14px 28px;border:1.5px solid var(--border);text-decoration:none;">도입 사례 보기</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer-bg" style="padding:48px 0 32px;">
+  <div class="container">
+    <div class="flex flex-col md:flex-row justify-between gap-10">
+      <div>
+        <a href="index.html"><img src="로고-AX 덴탈그룹.png" alt="AX Dental Group" style="height:34px;object-fit:contain;margin-bottom:16px;display:block;"></a>
+        <p style="font-size:0.82rem;color:rgba(255,255,255,0.85);line-height:1.8;max-width:240px;">치과 산업 AI 혁신을 선도합니다.<br>"AI가 운영하는 치과"를 함께 만들어 갑니다.</p>
+      </div>
+      <div class="flex gap-14">
+        <div>
+          <div style="font-size:0.7rem;font-weight:800;color:rgba(255,255,255,0.85);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px;">메뉴</div>
+          <a class="footer-link" href="platform.html">플랫폼 소개</a>
+          <a class="footer-link" href="services.html">AI 서비스</a>
+          <a class="footer-link" href="cases.html">도입 사례</a>
+          <a class="footer-link" href="market.html">시장 기회</a>
+          <a class="footer-link" href="../12-4 디지털스마일치과/proposal.html" target="_blank">협업 제안서</a>
+        </div>
+        <div>
+          <div style="font-size:0.7rem;font-weight:800;color:rgba(255,255,255,0.85);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px;">문의</div>
+          <a class="footer-link" href="contact.html">도입 문의</a>
+          <a class="footer-link" href="cases.html">파트너 사례</a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.12);margin-top:40px;padding-top:22px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;">
+      <p style="font-size:0.73rem;color:rgba(255,255,255,0.7);">© 2025 AX덴탈그룹. All rights reserved.</p>
+      <p style="font-size:0.73rem;color:rgba(255,255,255,0.7);">Powered by <span style="color:#0ABFA3;font-weight:700;">AI</span></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fu').forEach(el => obs.observe(el));
+  document.querySelectorAll('.svc-grid .svc-card').forEach((el, i) => { el.style.transitionDelay = (i * 0.07) + 's'; });
+</script>
+</body>
+</html>

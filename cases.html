@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>도입 사례 — AX덴탈그룹</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Pretendard','Noto Sans KR',sans-serif;background:#fff;color:#0A1628;-webkit-font-smoothing:antialiased;}
+    :root{--navy:#0A1628;--navy2:#162540;--teal:#0ABFA3;--teal-light:#E6FAF7;--blue:#1E6FBF;--blue-light:#EBF3FD;--gold:#B8960C;--gold-light:#FBF7E8;--sub:#243B55;--sub2:#3D5570;--border:#E4EAF2;--bg:#F7F9FC;}
+    .nav{background:rgba(244,248,253,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);position:fixed;top:0;left:0;right:0;z-index:100;}
+    .nav-link{color:var(--sub);font-size:0.85rem;font-weight:500;transition:color .2s;cursor:pointer;text-decoration:none;}
+    .nav-link:hover,.nav-link.nav-active{color:var(--teal);font-weight:700;}
+    .btn-cta-nav{background:linear-gradient(135deg,#0ABFA3,#1E6FBF);color:#fff;font-weight:700;font-size:0.82rem;border:none;border-radius:9px;padding:9px 20px;cursor:pointer;box-shadow:0 2px 12px rgba(10,191,163,0.25);transition:box-shadow .2s,transform .2s;text-decoration:none;display:inline-block;}
+    .btn-cta-nav:hover{box-shadow:0 4px 18px rgba(10,191,163,0.35);transform:translateY(-1px);}
+    .page-hero{background:linear-gradient(160deg,#F0F7FF 0%,#FAFCFF 40%,#F0FAF8 100%);padding:130px 0 80px;position:relative;overflow:hidden;}
+    .page-hero-dot{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,rgba(10,191,163,0.10) 1.5px,transparent 1.5px);background-size:32px 32px;}
+    .section{padding:90px 0;}
+    .section-alt{background:var(--bg);}
+    .container{max-width:1160px;margin:0 auto;padding:0 24px;}
+    .eyebrow{font-size:0.7rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:10px;}
+    .sec-title{font-size:clamp(1.9rem,3vw,2.7rem);font-weight:900;color:var(--navy);letter-spacing:-0.03em;line-height:1.18;}
+    .sec-desc{font-size:0.97rem;color:var(--sub);line-height:1.82;margin-top:12px;}
+    .divider{width:48px;height:3px;background:linear-gradient(90deg,#0ABFA3,#1E6FBF);border-radius:3px;margin:14px 0;}
+    .case-card{background:#fff;border-radius:24px;overflow:hidden;border:1.5px solid var(--border);box-shadow:0 4px 28px rgba(10,22,40,0.07);transition:transform .25s,box-shadow .25s;}
+    .case-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(10,22,40,0.11);}
+    .case-head{padding:32px;background:linear-gradient(135deg,var(--navy),#162540);position:relative;overflow:hidden;}
+    .case-head::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#0ABFA3,#1E6FBF);}
+    .case-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(10,191,163,0.12);border:1px solid rgba(10,191,163,0.25);border-radius:50px;padding:4px 12px;font-size:0.68rem;font-weight:700;color:#0ABFA3;margin-bottom:10px;letter-spacing:0.05em;}
+    .case-name{font-size:1.55rem;font-weight:900;color:#fff;letter-spacing:-0.025em;}
+    .case-loc{font-size:0.8rem;color:rgba(255,255,255,0.75);margin-top:4px;}
+    .case-body{padding:28px 32px 32px;}
+    .result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px;}
+    .result-item{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;}
+    .result-num{font-size:1.55rem;font-weight:900;color:var(--navy);letter-spacing:-0.02em;line-height:1.1;}
+    .result-num em{color:var(--teal);font-style:normal;}
+    .result-label{font-size:0.7rem;color:var(--sub2);margin-top:4px;font-weight:600;}
+    .applied-badges{display:flex;flex-wrap:wrap;gap:5px;margin:12px 0;}
+    .applied-b{font-size:0.7rem;font-weight:700;padding:4px 10px;border-radius:7px;background:var(--navy);color:rgba(255,255,255,0.92);}
+    .quote-box{background:linear-gradient(135deg,#F0FAF8,#EBF3FD);border:1px solid rgba(10,191,163,0.18);border-radius:14px;padding:16px 20px;margin-top:14px;position:relative;}
+    .quote-box::before{content:'"';font-size:2.8rem;color:rgba(10,191,163,0.15);position:absolute;top:2px;left:10px;font-family:Georgia,serif;line-height:1;}
+    .quote-text{font-size:0.83rem;color:var(--sub);line-height:1.78;padding-left:18px;font-style:italic;}
+    .quote-author{font-size:0.73rem;font-weight:700;color:var(--teal);margin-top:6px;padding-left:18px;}
+    .impact-card{background:#fff;border:1.5px solid var(--border);border-radius:20px;padding:28px 22px;text-align:center;box-shadow:0 2px 14px rgba(10,22,40,0.04);transition:transform .2s,box-shadow .2s,border-color .2s;}
+    .impact-card:hover{transform:translateY(-4px);box-shadow:0 10px 32px rgba(10,22,40,0.09);border-color:rgba(10,191,163,0.3);}
+    .impact-icon-wrap{width:52px;height:52px;border-radius:16px;background:var(--teal-light);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 14px;}
+    .impact-num{font-size:2.1rem;font-weight:900;color:var(--navy);letter-spacing:-0.03em;line-height:1;}
+    .impact-num em{color:var(--teal);font-style:normal;}
+    .impact-label{font-size:0.78rem;color:var(--sub);margin-top:6px;line-height:1.5;font-weight:600;}
+    .slide-img-box{border-radius:18px;overflow:hidden;box-shadow:0 8px 48px rgba(10,22,40,.10);border:1px solid var(--border);margin-bottom:22px;}
+    .slide-img-box img{width:100%;display:block;}
+    .slide-caption{background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px 28px;font-size:.94rem;color:var(--sub);line-height:1.88;box-shadow:0 2px 10px rgba(10,22,40,.04);}
+    .slide-caption strong{color:var(--navy);}
+    .slide-eyebrow{font-size:.68rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin-bottom:8px;}
+    .slide-title{font-size:1.12rem;font-weight:900;color:var(--navy);letter-spacing:-.02em;margin-bottom:16px;}
+    .footer-bg{background:#1A3050;border-top:1px solid rgba(255,255,255,0.05);}
+    .footer-link{font-size:0.82rem;color:rgba(255,255,255,0.88);cursor:pointer;transition:color .2s;display:block;margin-bottom:6px;text-decoration:none;}
+    .footer-link:hover{color:#0ABFA3;}
+    .fu{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease;}
+    .fu.vis{opacity:1;transform:translateY(0);}
+    @media(max-width:768px){.section{padding:60px 0;}.case-head{padding:24px 20px;}.case-body{padding:20px 20px 24px;}.slide-caption{padding:16px 20px;}}
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container">
+    <div class="flex items-center justify-between h-16">
+      <a href="index.html"><img src="로고-AX 덴탈그룹.png" alt="AX Dental Group" style="height:36px;object-fit:contain;"></a>
+      <div class="hidden md:flex items-center gap-6">
+        <a class="nav-link" href="index.html">홈</a>
+        <a class="nav-link" href="platform.html">플랫폼 소개</a>
+        <a class="nav-link" href="services.html">AI 서비스</a>
+        <a class="nav-link nav-active" href="cases.html">도입 사례</a>
+        <a class="nav-link" href="market.html">시장 기회</a>
+        <a class="nav-link" href="orgchart.html">조직도</a>
+        <a class="nav-link" href="../12-4 디지털스마일치과/proposal.html" target="_blank">협업 제안서</a>
+        <a class="btn-cta-nav" href="contact.html">도입 문의</a>
+      </div>
+      <button class="md:hidden text-gray-600" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden pb-4 border-t" style="border-color:var(--border);">
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="index.html">홈</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="platform.html">플랫폼 소개</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="services.html">AI 서비스</a>
+      <a class="block py-2.5 text-sm font-bold" style="color:var(--teal);border-bottom:1px solid var(--border);" href="cases.html">도입 사례</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="market.html">시장 기회</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="orgchart.html">조직도</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="../12-4 디지털스마일치과/proposal.html" target="_blank">협업 제안서</a>
+      <a class="block py-2.5 text-sm font-bold" style="color:var(--teal);" href="contact.html">도입 문의</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-dot"></div>
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="fu">
+      <div class="eyebrow">Case Studies</div>
+      <h1 class="sec-title" style="font-size:clamp(2.2rem,4vw,3.5rem);">AI 혁신 치과<br><span style="background:linear-gradient(90deg,#0ABFA3,#1E6FBF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">도입 사례</span></h1>
+      <div class="divider"></div>
+      <p class="sec-desc" style="max-width:580px;">실제 치과에서 AX덴탈그룹 솔루션을 적용한 결과와 파일럿 로드맵을 소개합니다.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- CASE CARDS -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="text-center mb-12 fu">
+      <div class="eyebrow">AI 파트너 치과</div>
+      <h2 class="sec-title">도입 파트너 현황</h2>
+      <div class="divider mx-auto"></div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+      <!-- Case 1 -->
+      <div class="case-card fu">
+        <div class="case-head">
+          <div class="case-badge">● CASE 01 · 도입 사례</div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <img src="../12-4 디지털스마일치과/로고-디지털스마일치과.png" alt="디지털스마일치과" style="height:38px;object-fit:contain;">
+            <span style="background:rgba(10,191,163,0.15);border:1px solid rgba(10,191,163,0.35);color:#0ABFA3;font-size:0.7rem;font-weight:800;padding:4px 10px;border-radius:6px;letter-spacing:0.06em;white-space:nowrap;">협의중</span>
+          </div>
+          <div class="case-loc">📍 대전 · 디지털 심미치과 전문</div>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <span style="background:rgba(10,191,163,0.15);border:1px solid rgba(10,191,163,0.25);color:#0ABFA3;font-size:0.67rem;font-weight:700;padding:3px 9px;border-radius:6px;">AI 진단 리포트</span>
+            <span style="background:rgba(30,111,191,0.15);border:1px solid rgba(30,111,191,0.25);color:#7dd3fc;font-size:0.67rem;font-weight:700;padding:3px 9px;border-radius:6px;">AI 협업 제안서</span>
+            <span style="background:rgba(91,79,233,0.15);border:1px solid rgba(91,79,233,0.25);color:#c4b5fd;font-size:0.67rem;font-weight:700;padding:3px 9px;border-radius:6px;">AI 콘텐츠 자동화</span>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="result-grid">
+            <div class="result-item"><div class="result-num"><em>↑</em>62%</div><div class="result-label">치료 동의율</div></div>
+            <div class="result-item"><div class="result-num"><em>10x</em></div><div class="result-label">콘텐츠 생산량</div></div>
+            <div class="result-item"><div class="result-num"><em>24h</em></div><div class="result-label">도입 완성</div></div>
+          </div>
+          <p style="font-size:0.84rem;color:var(--sub);line-height:1.78;">대전의 디지털 심미치과. 5D CT·디지털 스캔 기반 Digital Smile Design을 운영하며, AX덴탈그룹의 <strong style="color:var(--navy);">AI 진단 리포트</strong>와 <strong style="color:var(--navy);">AI 제안서</strong>를 도입해 환자 설득력을 획기적으로 높였습니다.</p>
+          <div style="font-size:0.72rem;font-weight:800;color:var(--sub2);letter-spacing:0.06em;text-transform:uppercase;margin:14px 0 8px;">도입 솔루션</div>
+          <div class="applied-badges">
+            <span class="applied-b">🩺 AI 구강 진단 리포트</span>
+            <span class="applied-b">📋 AI 협업 제안서</span>
+            <span class="applied-b">✍️ AI 블로그 자동화</span>
+            <span class="applied-b">📊 AI 워크플로우</span>
+          </div>
+          <div class="quote-box">
+            <p class="quote-text">환자에게 AI 진단 리포트를 보여주자 치료 설명 시간이 절반으로 줄었고, 치료 동의율이 눈에 띄게 올랐습니다. 임플란트 환자 상담에서 특히 효과가 컸습니다.</p>
+            <p class="quote-author">— 디지털스마일치과 원장</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 2 -->
+      <div class="case-card fu" style="transition-delay:.1s">
+        <div class="case-head">
+          <div class="case-badge">● CASE 02 · 도입 사례</div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <img src="로고-화이트서울치과.png" alt="화이트서울치과" style="height:38px;object-fit:contain;">
+            <span style="background:rgba(255,193,7,0.15);border:1px solid rgba(255,193,7,0.4);color:#F5C400;font-size:0.7rem;font-weight:800;padding:4px 10px;border-radius:6px;letter-spacing:0.06em;white-space:nowrap;">진행중</span>
+          </div>
+          <div class="case-loc">📍 대전 · 일반·교정·임플란트</div>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <span style="background:rgba(10,191,163,0.15);border:1px solid rgba(10,191,163,0.25);color:#0ABFA3;font-size:0.67rem;font-weight:700;padding:3px 9px;border-radius:6px;">AI 수익 분석</span>
+            <span style="background:rgba(30,111,191,0.15);border:1px solid rgba(30,111,191,0.25);color:#7dd3fc;font-size:0.67rem;font-weight:700;padding:3px 9px;border-radius:6px;">AI 노쇼 예측</span>
+            <span style="background:rgba(91,79,233,0.15);border:1px solid rgba(91,79,233,0.25);color:#c4b5fd;font-size:0.67rem;font-weight:700;padding:3px 9px;border-radius:6px;">AI 보험 청구</span>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="result-grid">
+            <div class="result-item"><div class="result-num"><em>↓</em>38%</div><div class="result-label">노쇼율 감소</div></div>
+            <div class="result-item"><div class="result-num" style="font-size:1.2rem;"><em>+</em>2,800만</div><div class="result-label">보험 누락 발견</div></div>
+            <div class="result-item"><div class="result-num"><em>↑</em>28%</div><div class="result-label">월 순수익</div></div>
+          </div>
+          <p style="font-size:0.84rem;color:var(--sub);line-height:1.78;">대전의 중·대형 치과. 교정·임플란트를 주력으로 운영하며 환자 관리와 경영 효율화가 과제였습니다. AX덴탈그룹의 <strong style="color:var(--navy);">AI 경영 분석</strong>과 <strong style="color:var(--navy);">노쇼 예측</strong> 도입 후 수익성이 크게 개선되었습니다.</p>
+          <div style="font-size:0.72rem;font-weight:800;color:var(--sub2);letter-spacing:0.06em;text-transform:uppercase;margin:14px 0 8px;">도입 솔루션</div>
+          <div class="applied-badges">
+            <span class="applied-b">💰 AI 수익 분석</span>
+            <span class="applied-b">📅 AI 노쇼 예측</span>
+            <span class="applied-b">🏥 AI 보험 청구</span>
+            <span class="applied-b">📊 AI 환자 LTV</span>
+          </div>
+          <div class="quote-box">
+            <p class="quote-text">AI가 보험 청구 누락을 찾아내는 것부터 시작했는데, 연간 2,800만 원이나 됐습니다. 노쇼 예측 자동화로 노쇼가 절반 가까이 줄었고, 직원 스트레스도 크게 감소했습니다.</p>
+            <p class="quote-author">— 화이트서울치과 원장</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-10 fu">
+      <p style="font-size:0.84rem;color:var(--sub);">현재 <strong style="color:var(--navy);">파트너 치과 모집 중</strong> — 첫 도입 병원에게는 무료 파일럿 프로그램을 제공합니다.</p>
+      <a href="contact.html" style="display:inline-block;margin-top:12px;background:transparent;border:1.5px solid var(--teal);color:var(--teal);font-size:0.82rem;font-weight:700;border-radius:10px;padding:10px 24px;text-decoration:none;">파일럿 신청하기 →</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- IMPACT -->
+<section style="padding:70px 0;background:#fff;">
+  <div class="container">
+    <div class="text-center mb-10 fu">
+      <div class="eyebrow">도입 효과</div>
+      <h2 class="sec-title">숫자로 증명합니다</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+      <div class="impact-card fu"><div class="impact-icon-wrap">📈</div><div class="impact-num"><em>62</em>%</div><div class="impact-label">치료 동의율 향상<br>(AI 진단 리포트)</div></div>
+      <div class="impact-card fu" style="transition-delay:.08s"><div class="impact-icon-wrap">📅</div><div class="impact-num"><em>40</em>%</div><div class="impact-label">노쇼율 감소<br>(AI 예약 예측)</div></div>
+      <div class="impact-card fu" style="transition-delay:.16s"><div class="impact-icon-wrap" style="background:#EBF3FD;">✍️</div><div class="impact-num" style="color:var(--blue);"><em style="color:var(--blue);">10</em>x</div><div class="impact-label">콘텐츠 생산성<br>(AI 자동 생성)</div></div>
+      <div class="impact-card fu" style="transition-delay:.24s"><div class="impact-icon-wrap" style="background:#FBF7E8;">🏥</div><div class="impact-num" style="font-size:1.6rem;"><em>3,000</em>만+</div><div class="impact-label">보험 청구 누락 발견<br>(연간 평균)</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SLIDE 9 -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="fu">
+      <div class="slide-eyebrow">Pilot Case · 디지털스마일치과</div>
+      <div class="slide-title">세계 최초 AI 치과 실증 모델: 대전 디지털스마일치과</div>
+      <div class="slide-img-box"><img src="AX덴탈그룹 소개자료/슬라이드9.PNG" alt="대전 디지털스마일치과 도입 로드맵"></div>
+      <div class="slide-caption"><p>대전 디지털스마일치과는 AX Dental OS의 <strong>세계 최초 실증 모델</strong>로서 특별한 의미를 갖습니다. 단순히 솔루션을 판매하고 도입하는 것이 아니라, 'AI가 완전히 운영하는 치과'라는 새로운 모델을 현실에서 검증하는 파일럿 프로젝트입니다.<br><br>도입은 6개월에 걸쳐 3단계로 진행됩니다. <strong>Phase 1-2(1~2개월)</strong>는 AI 진단 시스템과 환자 설명 영상 시스템을 전면 도입하는 단계입니다. 모든 환자 상담에 AI 진단 리포트와 Treatment Story Engine이 적용되어 치료 동의율 향상이 시작됩니다.<br><br><strong>Phase 3-4(3~4개월)</strong>는 AI 병원 경영 분석과 환자 LTV 분석 시스템이 가동되는 단계입니다. 진료별 수익성 분석, 환자 세그먼트별 LTV 파악, 노쇼 예측 시스템이 본격 작동하여 수익 최적화가 이루어집니다.<br><br><strong>Phase 5-6(5~6개월)</strong>는 노쇼 예측 자동 방어와 마케팅 SEO/AIO 시스템이 완전 연동되는 성장 자동화 단계입니다. 이 시점에서 치과는 AI가 진료 예약부터 마케팅까지 운영하는 완전한 'AI 치과'가 됩니다.<br><br>이 파일럿의 성공 사례는 전국 및 아시아 치과 네트워크 확장을 위한 가장 강력한 레퍼런스가 될 것입니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 22 -->
+<section class="section">
+  <div class="container">
+    <div class="fu">
+      <div class="slide-eyebrow">Pilot Roadmap</div>
+      <div class="slide-title">한국 최초 AI 스마트 치과 실증: 대전 디지털스마일치과 파일럿</div>
+      <div class="slide-img-box"><img src="AX덴탈그룹 소개자료/슬라이드22.PNG" alt="6개월 파일럿 로드맵"></div>
+      <div class="slide-caption"><p>한국 최초 AI 스마트 치과 실증 프로젝트의 상세 로드맵입니다. 이 프로젝트의 핵심은 '솔루션의 단순 도입'이 아니라 <strong>'AI가 운영하는 치과 모델'의 완성</strong>에 있습니다.<br><br><strong>Phase 1-2: AI 진단 및 환자 설명 시스템 전면 도입</strong><br>- AI 구강 종합 진단 리포트 100% 적용 (모든 신규 환자 및 재진 환자 상담 시)<br>- Treatment Story Engine을 통한 치료 전·후 시각화 상담 자료 자동 생성<br>- 임플란트·교정·심미 치료 고단가 진료 동의율 집중 개선<br>- 목표: 치료 동의율 기존 45% → 60% 이상 달성<br><br><strong>Phase 3-4: AI 경영 분석 및 환자 LTV 최적화</strong><br>- 진료별 순수익 자동 분석 및 수익 최적화 추천 가동<br>- 환자 LTV 분석을 통한 소개 채널 강화 전략 수립<br>- 노쇼 예측 시스템 가동으로 예약 손실 최소화<br>- AI 보험 청구 분석으로 누락 항목 탐지 및 수익 순증<br><br><strong>Phase 5-6: 성장 자동화 및 마케팅 SEO/AIO 연동</strong><br>- AI 콘텐츠 자동 생성으로 월 50건 이상 블로그·SNS 포스팅<br>- 네이버 플레이스 및 구글 검색 상위 노출 최적화<br>- 신환 유입 채널별 ROI 자동 분석 및 예산 최적화<br>- 전체 시스템 통합 운영으로 'AI 치과' 모델 완성</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 23 -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="fu">
+      <div class="slide-eyebrow">Pilot KPIs</div>
+      <div class="slide-title">명확하고 측정 가능한 AI 도입의 재무적 성과</div>
+      <div class="slide-img-box"><img src="AX덴탈그룹 소개자료/슬라이드23.PNG" alt="Pilot KPIs"></div>
+      <div class="slide-caption"><p>파일럿 프로젝트의 성패는 측정 가능한 재무적 성과로 증명됩니다. AX Dental OS 도입 후 대전 디지털스마일치과에서 달성을 목표로 하는 <strong>3가지 핵심 KPI</strong>입니다.<br><br><strong>① 치료 동의율 +33.3% (기존 45% → 60% 목표)</strong><br>치료 동의율이 45%에서 60%로 향상된다는 것은, 상담 100건 중 15건의 추가 치료 계약이 발생한다는 의미입니다. 임플란트 평균 단가 350만 원 기준으로, 월 상담 50건의 치과라면 월 2,625만 원의 추가 매출이 발생합니다. AI 진단 리포트와 Treatment Story Engine이 이 변화를 만들어냅니다.<br><br><strong>② 노쇼율 -40% (자동 방어 시스템)</strong><br>노쇼 1건당 병원이 손실하는 금액은 예약 진료 단가뿐만 아니라 체어타임, 직원 시간, 다른 환자 기회 비용을 합산하면 평균 15~20만 원에 달합니다. 월 노쇼 30건이 발생하는 병원이라면 월 450~600만 원의 손실입니다. 노쇼율 40% 감소는 이 손실의 상당 부분을 막는 직접적인 수익 개선 효과입니다.<br><br><strong>③ 보험 청구 누락 발굴 → 수천만 원 매출 순증</strong><br>AI 보험 청구 최적화 시스템이 청구 누락 항목을 탐지하여 즉시 환수합니다. 실제 유사 규모 치과에서 연간 3,000만 원 이상의 누락이 발견되었습니다. 이는 추가 비용 없이 즉시 실현되는 순수 매출 증가입니다.<br><br>이 3가지 KPI의 달성 데이터는 전국 및 아시아 치과 네트워크 확장을 위한 가장 강력한 세일즈 레퍼런스가 됩니다.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA -->
+<section style="padding:80px 0;background:linear-gradient(160deg,#F0F7FF 0%,#F0FAF8 100%);">
+  <div class="container text-center">
+    <div class="fu">
+      <h2 class="sec-title mb-4">파트너 치과가 되세요</h2>
+      <p class="sec-desc mx-auto" style="max-width:480px;">첫 도입 병원에게는 무료 파일럿 프로그램을 제공합니다. 지금 신청하세요.</p>
+      <div class="flex gap-4 justify-center mt-8 flex-wrap">
+        <a href="contact.html" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#0ABFA3,#1E6FBF);color:#fff;font-weight:700;font-size:0.9rem;border-radius:12px;padding:14px 30px;text-decoration:none;box-shadow:0 4px 20px rgba(10,191,163,0.28);">파일럿 신청하기 →</a>
+        <a href="../12-4 디지털스마일치과/proposal.html" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--navy);font-weight:600;font-size:0.9rem;border-radius:12px;padding:14px 28px;border:1.5px solid var(--border);text-decoration:none;">협업 제안서 보기</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer-bg" style="padding:48px 0 32px;">
+  <div class="container">
+    <div class="flex flex-col md:flex-row justify-between gap-10">
+      <div>
+        <a href="index.html"><img src="로고-AX 덴탈그룹.png" alt="AX Dental Group" style="height:34px;object-fit:contain;margin-bottom:16px;display:block;"></a>
+        <p style="font-size:0.82rem;color:rgba(255,255,255,0.85);line-height:1.8;max-width:240px;">치과 산업 AI 혁신을 선도합니다.<br>"AI가 운영하는 치과"를 함께 만들어 갑니다.</p>
+      </div>
+      <div class="flex gap-14">
+        <div>
+          <div style="font-size:0.7rem;font-weight:800;color:rgba(255,255,255,0.85);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px;">메뉴</div>
+          <a class="footer-link" href="platform.html">플랫폼 소개</a>
+          <a class="footer-link" href="services.html">AI 서비스</a>
+          <a class="footer-link" href="cases.html">도입 사례</a>
+          <a class="footer-link" href="market.html">시장 기회</a>
+          <a class="footer-link" href="../12-4 디지털스마일치과/proposal.html" target="_blank">협업 제안서</a>
+        </div>
+        <div>
+          <div style="font-size:0.7rem;font-weight:800;color:rgba(255,255,255,0.85);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px;">문의</div>
+          <a class="footer-link" href="contact.html">도입 문의</a>
+          <a class="footer-link" href="cases.html">파트너 사례</a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.12);margin-top:40px;padding-top:22px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;">
+      <p style="font-size:0.73rem;color:rgba(255,255,255,0.7);">© 2025 AX덴탈그룹. All rights reserved.</p>
+      <p style="font-size:0.73rem;color:rgba(255,255,255,0.7);">Powered by <span style="color:#0ABFA3;font-weight:700;">AI</span></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fu').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AX덴탈그룹 — AI가 운영하는 치과</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Pretendard','Noto Sans KR',sans-serif;background:#fff;color:#0A1628;-webkit-font-smoothing:antialiased;}
+    :root{
+      --navy:#0A1628; --navy2:#162540; --teal:#0ABFA3; --teal-light:#E6FAF7;
+      --blue:#1E6FBF; --blue-light:#EBF3FD; --gold:#B8960C; --gold-light:#FBF7E8;
+      --sub:#243B55; --sub2:#3D5570; --border:#E4EAF2; --bg:#F7F9FC;
+    }
+    .nav{background:rgba(244,248,253,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);position:fixed;top:0;left:0;right:0;z-index:100;}
+    .nav-link{color:var(--sub);font-size:0.85rem;font-weight:500;transition:color .2s;cursor:pointer;text-decoration:none;}
+    .nav-link:hover,.nav-link.nav-active{color:var(--teal);font-weight:700;}
+    .btn-cta-nav{background:linear-gradient(135deg,#0ABFA3,#1E6FBF);color:#fff;font-weight:700;font-size:0.82rem;border:none;border-radius:9px;padding:9px 20px;cursor:pointer;box-shadow:0 2px 12px rgba(10,191,163,0.25);transition:box-shadow .2s,transform .2s;text-decoration:none;display:inline-block;}
+    .btn-cta-nav:hover{box-shadow:0 4px 18px rgba(10,191,163,0.35);transform:translateY(-1px);}
+    .hero{min-height:100vh;background:linear-gradient(160deg,#F0F7FF 0%,#FAFCFF 40%,#F0FAF8 100%);position:relative;overflow:hidden;display:flex;align-items:center;}
+    .hero-dot-grid{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,rgba(10,191,163,0.12) 1.5px,transparent 1.5px);background-size:32px 32px;}
+    .hero-blob{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;}
+    .blob1{width:600px;height:600px;background:rgba(10,191,163,0.08);top:-150px;right:-100px;}
+    .blob2{width:500px;height:500px;background:rgba(30,111,191,0.06);bottom:-100px;left:-100px;}
+    .blob3{width:300px;height:300px;background:rgba(184,150,12,0.04);top:30%;left:30%;}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--border);border-radius:50px;padding:7px 18px;font-size:0.75rem;font-weight:700;color:var(--sub);letter-spacing:0.06em;margin-bottom:24px;box-shadow:0 2px 12px rgba(10,22,40,0.06);}
+    .badge-dot{width:7px;height:7px;background:#0ABFA3;border-radius:50%;animation:pulse-dot 2s infinite;}
+    @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.5)}}
+    .hero-title{font-size:clamp(2.4rem,4.5vw,4rem);font-weight:900;line-height:1.1;letter-spacing:-0.035em;color:var(--navy);}
+    .hero-em{background:linear-gradient(90deg,#0ABFA3 0%,#1E6FBF 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .hero-sub{font-size:1.05rem;color:var(--sub);line-height:1.85;max-width:500px;margin-top:18px;}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#0ABFA3,#1E6FBF);color:#fff;font-weight:700;font-size:0.9rem;border-radius:12px;padding:14px 30px;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(10,191,163,0.28);transition:transform .2s,box-shadow .2s;text-decoration:none;}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(10,191,163,0.38);}
+    .btn-secondary{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--navy);font-weight:600;font-size:0.9rem;border-radius:12px;padding:14px 28px;border:1.5px solid var(--border);cursor:pointer;transition:border-color .2s,box-shadow .2s;text-decoration:none;}
+    .btn-secondary:hover{border-color:var(--teal);box-shadow:0 2px 12px rgba(10,191,163,0.12);}
+    .hero-stats-row{display:flex;align-items:center;gap:6px;margin-top:36px;flex-wrap:wrap;}
+    .stat-pill{background:#fff;border:1px solid var(--border);border-radius:50px;padding:8px 16px;display:flex;align-items:center;gap:8px;box-shadow:0 2px 10px rgba(10,22,40,0.05);}
+    .stat-pill-num{font-size:1rem;font-weight:900;color:var(--navy);letter-spacing:-0.02em;}
+    .stat-pill-num em{color:var(--teal);font-style:normal;}
+    .stat-pill-label{font-size:0.72rem;color:var(--sub2);font-weight:500;}
+    .hero-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:24px;box-shadow:0 8px 40px rgba(10,22,40,0.1);max-width:340px;}
+    .ai-chip{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#E6FAF7,#EBF3FD);border:1px solid rgba(10,191,163,0.25);border-radius:8px;padding:5px 12px;font-size:0.72rem;font-weight:800;color:var(--teal);letter-spacing:0.06em;margin-bottom:12px;}
+    .score-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+    .score-bar-bg{flex:1;height:7px;background:#F0F4F8;border-radius:4px;overflow:hidden;margin:0 10px;}
+    .score-bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,#0ABFA3,#1E6FBF);}
+    .stats-band{background:var(--navy);padding:36px 0;}
+    .stats-band-item{text-align:center;flex:1;padding:0 12px;}
+    .stats-band-num{font-size:2.2rem;font-weight:900;color:#fff;letter-spacing:-0.03em;line-height:1;}
+    .stats-band-num em{color:#0ABFA3;font-style:normal;}
+    .stats-band-label{font-size:0.75rem;color:rgba(255,255,255,0.72);margin-top:5px;font-weight:500;}
+    .section{padding:100px 0;}
+    .section-sm{padding:70px 0;}
+    .container{max-width:1160px;margin:0 auto;padding:0 24px;}
+    .eyebrow{font-size:0.7rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:10px;}
+    .sec-title{font-size:clamp(1.9rem,3vw,2.7rem);font-weight:900;color:var(--navy);letter-spacing:-0.03em;line-height:1.18;}
+    .sec-desc{font-size:0.97rem;color:var(--sub);line-height:1.82;margin-top:12px;}
+    .divider{width:48px;height:3px;background:linear-gradient(90deg,#0ABFA3,#1E6FBF);border-radius:3px;margin:14px 0;}
+    .about-bg{background:var(--bg);}
+    .vision-box{background:#fff;border:1px solid var(--border);border-radius:24px;padding:48px;box-shadow:0 4px 32px rgba(10,22,40,0.06);position:relative;overflow:hidden;}
+    .vision-box::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#0ABFA3,#1E6FBF,#B8960C);}
+    .pillar{flex:1;border-radius:18px;padding:28px 22px;text-align:center;min-width:0;border:1.5px solid;}
+    .pillar-1{background:#F0FAF8;border-color:rgba(10,191,163,0.2);}
+    .pillar-2{background:#EBF3FD;border-color:rgba(30,111,191,0.2);}
+    .pillar-3{background:#FBF7E8;border-color:rgba(184,150,12,0.2);}
+    .pillar-icon{width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin:0 auto 14px;}
+    .pi1{background:linear-gradient(135deg,#0ABFA3,#1E6FBF);}
+    .pi2{background:linear-gradient(135deg,#1E6FBF,#3B4FD8);}
+    .pi3{background:linear-gradient(135deg,#B8960C,#E0A500);}
+    /* Nav cards */
+    .nav-card{background:#fff;border:1.5px solid var(--border);border-radius:20px;padding:28px 24px;transition:transform .25s,box-shadow .25s,border-color .25s;text-decoration:none;display:block;position:relative;overflow:hidden;}
+    .nav-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#0ABFA3,#1E6FBF);}
+    .nav-card:hover{transform:translateY(-5px);box-shadow:0 14px 40px rgba(10,22,40,0.09);border-color:rgba(10,191,163,0.35);}
+    .nav-card-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:14px;background:var(--teal-light);}
+    .nav-card-title{font-size:1rem;font-weight:800;color:var(--navy);margin-bottom:6px;letter-spacing:-0.01em;}
+    .nav-card-desc{font-size:0.8rem;color:var(--sub);line-height:1.65;}
+    .nav-card-arrow{position:absolute;right:20px;top:50%;transform:translateY(-50%);color:var(--teal);font-size:1.2rem;opacity:0.5;}
+    /* Footer */
+    .footer-bg{background:#1A3050;border-top:1px solid rgba(255,255,255,0.05);}
+    .footer-link{font-size:0.82rem;color:rgba(255,255,255,0.88);cursor:pointer;transition:color .2s;display:block;margin-bottom:6px;text-decoration:none;}
+    .footer-link:hover{color:#0ABFA3;}
+    .fu{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease;}
+    .fu.vis{opacity:1;transform:translateY(0);}
+    .fu-fast{transition-duration:.45s;}
+    .equip-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;}
+    @media(max-width:900px){.equip-grid{grid-template-columns:repeat(4,1fr);}}
+    @media(max-width:540px){.equip-grid{grid-template-columns:repeat(3,1fr);}}
+    @media(max-width:768px){.section{padding:64px 0;}.vision-box{padding:28px 20px;}}
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════ NAVBAR ══════════════════════ -->
+<nav class="nav">
+  <div class="container">
+    <div class="flex items-center justify-between h-16">
+      <a href="index.html"><img src="로고-AX 덴탈그룹.png" alt="AX Dental Group" style="height:36px;object-fit:contain;"></a>
+      <div class="hidden md:flex items-center gap-6">
+        <a class="nav-link nav-active" href="index.html">홈</a>
+        <a class="nav-link" href="platform.html">플랫폼 소개</a>
+        <a class="nav-link" href="services.html">AI 서비스</a>
+        <a class="nav-link" href="cases.html">도입 사례</a>
+        <a class="nav-link" href="market.html">시장 기회</a>
+        <a class="nav-link" href="orgchart.html">조직도</a>
+        <a class="nav-link" href="../12-4 디지털스마일치과/proposal.html" target="_blank">협업 제안서</a>
+        <a class="btn-cta-nav" href="contact.html">도입 문의</a>
+      </div>
+      <button class="md:hidden text-gray-600" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden pb-4 border-t" style="border-color:var(--border);">
+      <a class="block py-2.5 text-sm font-semibold" style="color:var(--teal);border-bottom:1px solid var(--border);" href="index.html">홈</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="platform.html">플랫폼 소개</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="services.html">AI 서비스</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="cases.html">도입 사례</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="market.html">시장 기회</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="orgchart.html">조직도</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="../12-4 디지털스마일치과/proposal.html" target="_blank">협업 제안서</a>
+      <a class="block py-2.5 text-sm font-bold" style="color:var(--teal);" href="contact.html">도입 문의</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════ HERO ══════════════════════ -->
+<section class="hero" style="padding-top:64px;">
+  <div class="hero-dot-grid"></div>
+  <div class="hero-blob blob1"></div>
+  <div class="hero-blob blob2"></div>
+  <div class="hero-blob blob3"></div>
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+      <div class="flex-1 pt-8 lg:pt-0">
+        <div class="hero-badge fu fu-fast">
+          <span class="badge-dot"></span>
+          세계 최초 치과 AI 경영 플랫폼
+        </div>
+        <h1 class="hero-title fu">
+          치과 경영을<br>
+          <span class="hero-em">AI로 혁신</span>합니다
+        </h1>
+        <p class="hero-sub fu">
+          AX덴탈그룹은 AI 진단 리포트부터 콘텐츠 자동화,<br>
+          수익 분석, 노쇼 예측까지 — 치과 원장님이<br>
+          진료에만 집중할 수 있는 환경을 만들어 드립니다.
+        </p>
+        <div class="flex flex-wrap gap-3 mt-8 fu">
+          <a class="btn-primary" href="cases.html">
+            도입 사례 보기
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a class="btn-secondary" href="services.html">서비스 살펴보기</a>
+        </div>
+        <div class="hero-stats-row fu">
+          <div class="stat-pill"><span class="stat-pill-num"><em>6</em>가지</span><span class="stat-pill-label">AI 핵심 솔루션</span></div>
+          <div class="stat-pill"><span class="stat-pill-num"><em>↑</em>62%</span><span class="stat-pill-label">치료 동의율</span></div>
+          <div class="stat-pill"><span class="stat-pill-num"><em>↓</em>40%</span><span class="stat-pill-label">노쇼율 감소</span></div>
+        </div>
+      </div>
+      <div class="flex-1 flex justify-center lg:justify-end fu" style="max-width:400px;width:100%;">
+        <div class="hero-card w-full">
+          <div class="ai-chip">🤖 AI 구강 진단 분석 중...</div>
+          <div style="font-size:0.78rem;font-weight:800;color:var(--navy);margin-bottom:12px;letter-spacing:-0.01em;">환자 #2847 · AI 진단 리포트</div>
+          <div class="score-row"><span style="font-size:0.72rem;color:var(--sub2);width:64px;flex-shrink:0;">치주 건강</span><div class="score-bar-bg"><div class="score-bar-fill" style="width:78%;"></div></div><span style="font-size:0.72rem;font-weight:700;color:var(--navy);width:28px;text-align:right;flex-shrink:0;">78</span></div>
+          <div class="score-row"><span style="font-size:0.72rem;color:var(--sub2);width:64px;flex-shrink:0;">충치 위험</span><div class="score-bar-bg"><div class="score-bar-fill" style="width:42%;background:linear-gradient(90deg,#E0A500,#ef4444);"></div></div><span style="font-size:0.72rem;font-weight:700;color:var(--navy);width:28px;text-align:right;flex-shrink:0;">42</span></div>
+          <div class="score-row"><span style="font-size:0.72rem;color:var(--sub2);width:64px;flex-shrink:0;">임플란트</span><div class="score-bar-bg"><div class="score-bar-fill" style="width:94%;"></div></div><span style="font-size:0.72rem;font-weight:700;color:var(--navy);width:28px;text-align:right;flex-shrink:0;">94%</span></div>
+          <div style="background:var(--teal-light);border:1px solid rgba(10,191,163,0.2);border-radius:10px;padding:10px 12px;margin-top:14px;">
+            <div style="font-size:0.68rem;font-weight:800;color:var(--teal);margin-bottom:4px;">🤖 AI 추천 치료 계획</div>
+            <div style="font-size:0.75rem;color:var(--navy);line-height:1.6;">임플란트 성공 확률 94% · 즉시 시술 권장</div>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:14px;">
+            <div style="flex:1;background:#F7F9FC;border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:0.65rem;color:var(--sub2);font-weight:600;">AI 분석 시간</div><div style="font-size:1rem;font-weight:900;color:var(--navy);">2.3<span style="font-size:0.65rem;">초</span></div></div>
+            <div style="flex:1;background:#F7F9FC;border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:0.65rem;color:var(--sub2);font-weight:600;">진단 정확도</div><div style="font-size:1rem;font-weight:900;color:var(--teal);">93%+</div></div>
+            <div style="flex:1;background:#F7F9FC;border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:0.65rem;color:var(--sub2);font-weight:600;">동의율 향상</div><div style="font-size:1rem;font-weight:900;color:var(--blue);">+62%</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════ STATS BAND ══════════════════════ -->
+<div class="stats-band">
+  <div class="container">
+    <div class="flex items-stretch">
+      <div class="stats-band-item"><div class="stats-band-num"><em>93%</em></div><div class="stats-band-label">AI 진단 정확도</div></div>
+      <div style="width:1px;background:rgba(255,255,255,0.07);margin:20px 0;"></div>
+      <div class="stats-band-item"><div class="stats-band-num"><em>↓40</em>%</div><div class="stats-band-label">노쇼율 감소</div></div>
+      <div style="width:1px;background:rgba(255,255,255,0.07);margin:20px 0;"></div>
+      <div class="stats-band-item"><div class="stats-band-num"><em>10x</em></div><div class="stats-band-label">콘텐츠 생산성</div></div>
+      <div style="width:1px;background:rgba(255,255,255,0.07);margin:20px 0;"></div>
+      <div class="stats-band-item"><div class="stats-band-num"><em>1조</em>+</div><div class="stats-band-label">국내 잠재 시장</div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════ ABOUT ══════════════════════ -->
+<section class="section about-bg" id="about">
+  <div class="container">
+    <div class="text-center mb-12 fu">
+      <div class="eyebrow">AX덴탈그룹 소개</div>
+      <h2 class="sec-title">AI가 운영하는 치과를 만듭니다</h2>
+      <div class="divider mx-auto"></div>
+      <p class="sec-desc max-w-xl mx-auto text-center">
+        단순 디지털 도구가 아닙니다. 치과 경영 전체를 AI로 전환하는<br>
+        <strong style="color:var(--navy);">Dental AI Operating System</strong>을 제공합니다.
+      </p>
+    </div>
+    <div class="vision-box fu mb-10">
+      <div class="text-center mb-10">
+        <p style="font-size:0.72rem;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal);margin-bottom:8px;">Our Vision</p>
+        <h3 style="font-size:clamp(1.3rem,2.2vw,1.9rem);font-weight:900;color:var(--navy);letter-spacing:-0.025em;line-height:1.3;">
+          AI Diagnostic Tool →
+          <span style="color:var(--teal);">AI Dental Operating System</span>
+        </h3>
+        <p style="font-size:0.9rem;color:var(--sub);margin-top:10px;line-height:1.75;">
+          임상 AI를 넘어, 마케팅·경영·환자 관리까지 통합하는 치과 전용 AI 운영 플랫폼
+        </p>
+      </div>
+      <div class="flex flex-col md:flex-row gap-4">
+        <div class="pillar pillar-1">
+          <div class="pillar-icon pi1">🦷</div>
+          <div style="font-size:0.72rem;font-weight:800;color:#089B83;letter-spacing:0.08em;margin-bottom:6px;">임상 AI</div>
+          <div style="font-size:1rem;font-weight:800;color:var(--navy);margin-bottom:6px;">진단 정확도 향상</div>
+          <div style="font-size:0.8rem;color:var(--sub);line-height:1.65;">파노라마·CT 분석, AI 진단 리포트 자동 생성, 치료 시뮬레이션</div>
+        </div>
+        <div class="pillar pillar-2">
+          <div class="pillar-icon pi2">📢</div>
+          <div style="font-size:0.72rem;font-weight:800;color:#1A5FA8;letter-spacing:0.08em;margin-bottom:6px;">마케팅 AI</div>
+          <div style="font-size:1rem;font-weight:800;color:var(--navy);margin-bottom:6px;">환자 유입 자동화</div>
+          <div style="font-size:0.8rem;color:var(--sub);line-height:1.65;">SEO·AIO 콘텐츠 자동 생성, SNS 포스팅, 키워드 최적화</div>
+        </div>
+        <div class="pillar pillar-3">
+          <div class="pillar-icon pi3">📊</div>
+          <div style="font-size:0.72rem;font-weight:800;color:#9A7A00;letter-spacing:0.08em;margin-bottom:6px;">경영 AI</div>
+          <div style="font-size:1rem;font-weight:800;color:var(--navy);margin-bottom:6px;">데이터 기반 경영</div>
+          <div style="font-size:0.8rem;color:var(--sub);line-height:1.65;">수익률 분석, 노쇼 예측, 환자 LTV, 보험 청구 최적화</div>
+        </div>
+      </div>
+
+      <!-- 장비 갤러리 -->
+      <div style="margin-top:36px;padding-top:32px;border-top:1px solid var(--border);">
+        <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:6px;">디지털스마일치과 보유 장비</div>
+        <p style="font-size:0.82rem;color:var(--sub);margin-bottom:20px;line-height:1.6;">7가지 최첨단 장비 데이터가 AI 플랫폼에 통합되어 종합 진단 리포트를 생성합니다.</p>
+        <div class="equip-grid">
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:12px 8px;text-align:center;">
+            <div style="height:72px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:8px;">
+              <img src="https://www.vatech.com/files/attach/images/288/313/8d7e2996adad9bb09e47e34c370d5b47.jpg" alt="3D/5D CT" style="max-height:68px;max-width:100%;object-fit:contain;">
+            </div>
+            <div style="font-size:0.72rem;font-weight:800;color:var(--navy);line-height:1.3;">3D / 5D CT</div>
+            <div style="font-size:0.65rem;color:var(--sub2);margin-top:2px;">Vatech PaX-i3D</div>
+          </div>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:12px 8px;text-align:center;">
+            <div style="height:72px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:8px;">
+              <img src="https://www.medit.com/wp-content/uploads/2023/11/medit-i700-1.webp" alt="구강 스캐너" style="max-height:68px;max-width:100%;object-fit:contain;">
+            </div>
+            <div style="font-size:0.72rem;font-weight:800;color:var(--navy);line-height:1.3;">구강 스캐너</div>
+            <div style="font-size:0.65rem;color:var(--sub2);margin-top:2px;">Medit i700</div>
+          </div>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:12px 8px;text-align:center;">
+            <div style="height:72px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:8px;">
+              <img src="https://www.shining3ddental.com/hs-fs/hubfs/website-S3D-dental/images/2.%20Face%20Scanner/MetiSmile/37C3B8FC-60CF-40FA-B16F-672775DEA9FF.png" alt="페이스 스캐너" style="max-height:68px;max-width:100%;object-fit:contain;">
+            </div>
+            <div style="font-size:0.72rem;font-weight:800;color:var(--navy);line-height:1.3;">페이스 스캐너</div>
+            <div style="font-size:0.65rem;color:var(--sub2);margin-top:2px;">Shining3D MetiSmile</div>
+          </div>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:12px 8px;text-align:center;">
+            <div style="height:72px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:8px;">
+              <img src="https://www.dentsplysirona.com/en-us/discover/discover-by-category/cad-cam/_jcr_content/root/container/dentsplycontainer_109571960/teaser_copy_86458042/image.coreimg.png/1665503971644/dsc-image-primescan-product-image.png" alt="CAD/CAM" style="max-height:68px;max-width:100%;object-fit:contain;">
+            </div>
+            <div style="font-size:0.72rem;font-weight:800;color:var(--navy);line-height:1.3;">CAD / CAM</div>
+            <div style="font-size:0.65rem;color:var(--sub2);margin-top:2px;">Primescan</div>
+          </div>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:12px 8px;text-align:center;">
+            <div style="height:72px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:8px;">
+              <img src="https://image.rolanddga.com/-/media/roland-dg/images/products/dental/dwx-53d/banner/dgshape-dwx53d-banner-mobile.jpg" alt="밀링머신" style="max-height:68px;max-width:100%;object-fit:contain;">
+            </div>
+            <div style="font-size:0.72rem;font-weight:800;color:var(--navy);line-height:1.3;">밀링 머신</div>
+            <div style="font-size:0.65rem;color:var(--sub2);margin-top:2px;">Roland DWX-53D</div>
+          </div>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:12px 8px;text-align:center;">
+            <div style="height:72px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:8px;">
+              <img src="https://www.zeiss.com/content/dam/med-hcp/reference-master/product-portfolio/surgical-microscopes/opmi-proergo/images/zeiss-opmi-proergo-dental.jpg" alt="수술현미경" style="max-height:68px;max-width:100%;object-fit:contain;">
+            </div>
+            <div style="font-size:0.72rem;font-weight:800;color:var(--navy);line-height:1.3;">수술 현미경</div>
+            <div style="font-size:0.65rem;color:var(--sub2);margin-top:2px;">Zeiss OPMI</div>
+          </div>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:12px 8px;text-align:center;">
+            <div style="height:72px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:8px;">
+              <img src="https://dental-media.formlabs.com/filer_public/58/11/581180b0-5c2e-4b0b-8452-145b052ef6f6/11042019_f3_sg_023.jpg" alt="3D 프린터" style="max-height:68px;max-width:100%;object-fit:contain;">
+            </div>
+            <div style="font-size:0.72rem;font-weight:800;color:var(--navy);line-height:1.3;">3D 프린터</div>
+            <div style="font-size:0.65rem;color:var(--sub2);margin-top:2px;">Formlabs Form 3</div>
+          </div>
+        </div>
+        <div style="text-align:right;margin-top:10px;">
+          <a href="../12-4 디지털스마일치과/equipment.html" target="_blank" style="font-size:0.76rem;color:var(--teal);font-weight:700;text-decoration:none;">전체 장비 스펙 보기 →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════ EXPLORE PAGES ══════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="text-center mb-12 fu">
+      <div class="eyebrow">페이지 탐색</div>
+      <h2 class="sec-title">더 자세히 알아보세요</h2>
+      <div class="divider mx-auto"></div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <a class="nav-card fu" href="platform.html">
+        <div class="nav-card-icon">🏗️</div>
+        <div class="nav-card-title">플랫폼 소개</div>
+        <div class="nav-card-desc">AX Dental OS의 4대 AI 레이어 구조, 패러다임 전환, 경쟁 우위를 상세히 소개합니다.</div>
+        <span class="nav-card-arrow">›</span>
+      </a>
+      <a class="nav-card fu" href="services.html" style="transition-delay:.07s">
+        <div class="nav-card-icon" style="background:#EBF3FD;">🤖</div>
+        <div class="nav-card-title">AI 서비스</div>
+        <div class="nav-card-desc">6대 AI 엔진의 상세 기능 — 진단·치료 스토리·수익·LTV·예약·보험 AI를 확인하세요.</div>
+        <span class="nav-card-arrow">›</span>
+      </a>
+      <a class="nav-card fu" href="cases.html" style="transition-delay:.14s">
+        <div class="nav-card-icon" style="background:#F0EEFF;">🏥</div>
+        <div class="nav-card-title">도입 사례</div>
+        <div class="nav-card-desc">디지털스마일치과·화이트서울치과의 실제 도입 성과와 파일럿 KPI를 확인하세요.</div>
+        <span class="nav-card-arrow">›</span>
+      </a>
+      <a class="nav-card fu" href="market.html" style="transition-delay:.21s">
+        <div class="nav-card-icon" style="background:#FBF7E8;">📈</div>
+        <div class="nav-card-title">시장 기회</div>
+        <div class="nav-card-desc">글로벌 200조 원 치과 AI 시장, SaaS 수익 모델, 1조 유니콘 전략을 확인하세요.</div>
+        <span class="nav-card-arrow">›</span>
+      </a>
+      <a class="nav-card fu" href="../12-4 디지털스마일치과/proposal.html" target="_blank" style="transition-delay:.28s">
+        <div class="nav-card-icon" style="background:#ECFDF5;">📋</div>
+        <div class="nav-card-title">협업 제안서</div>
+        <div class="nav-card-desc">디지털스마일치과 맞춤형 AI 혁신 협업 제안서를 확인하세요.</div>
+        <span class="nav-card-arrow">›</span>
+      </a>
+      <a class="nav-card fu" href="contact.html" style="transition-delay:.35s">
+        <div class="nav-card-icon" style="background:linear-gradient(135deg,#E6FAF7,#EBF3FD);">✉️</div>
+        <div class="nav-card-title">도입 문의</div>
+        <div class="nav-card-desc">48시간 내 병원 맞춤 AI 솔루션 제안서를 무료로 받아보세요.</div>
+        <span class="nav-card-arrow">›</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════ FOOTER ══════════════════════ -->
+<footer class="footer-bg" style="padding:48px 0 32px;">
+  <div class="container">
+    <div class="flex flex-col md:flex-row justify-between gap-10">
+      <div>
+        <a href="index.html"><img src="로고-AX 덴탈그룹.png" alt="AX Dental Group" style="height:34px;object-fit:contain;margin-bottom:16px;display:block;"></a>
+        <p style="font-size:0.82rem;color:rgba(255,255,255,0.85);line-height:1.8;max-width:240px;">치과 산업 AI 혁신을 선도합니다.<br>"AI가 운영하는 치과"를 함께 만들어 갑니다.</p>
+      </div>
+      <div class="flex gap-14">
+        <div>
+          <div style="font-size:0.7rem;font-weight:800;color:rgba(255,255,255,0.85);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px;">메뉴</div>
+          <a class="footer-link" href="platform.html">플랫폼 소개</a>
+          <a class="footer-link" href="services.html">AI 서비스</a>
+          <a class="footer-link" href="cases.html">도입 사례</a>
+          <a class="footer-link" href="market.html">시장 기회</a>
+          <a class="footer-link" href="../12-4 디지털스마일치과/proposal.html" target="_blank">협업 제안서</a>
+        </div>
+        <div>
+          <div style="font-size:0.7rem;font-weight:800;color:rgba(255,255,255,0.85);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px;">문의</div>
+          <a class="footer-link" href="contact.html">도입 문의</a>
+          <a class="footer-link" href="cases.html">파트너 사례</a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.12);margin-top:40px;padding-top:22px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;">
+      <p style="font-size:0.73rem;color:rgba(255,255,255,0.7);">© 2025 AX덴탈그룹. All rights reserved.</p>
+      <p style="font-size:0.73rem;color:rgba(255,255,255,0.7);">Powered by <span style="color:#0ABFA3;font-weight:700;">AI</span></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fu').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

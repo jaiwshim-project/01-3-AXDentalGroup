@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>시장 기회 — AX덴탈그룹</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Pretendard','Noto Sans KR',sans-serif;background:#fff;color:#0A1628;-webkit-font-smoothing:antialiased;}
+    :root{--navy:#0A1628;--navy2:#162540;--teal:#0ABFA3;--teal-light:#E6FAF7;--blue:#1E6FBF;--blue-light:#EBF3FD;--gold:#B8960C;--gold-light:#FBF7E8;--sub:#243B55;--sub2:#3D5570;--border:#E4EAF2;--bg:#F7F9FC;}
+    .nav{background:rgba(244,248,253,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);position:fixed;top:0;left:0;right:0;z-index:100;}
+    .nav-link{color:var(--sub);font-size:0.85rem;font-weight:500;transition:color .2s;cursor:pointer;text-decoration:none;}
+    .nav-link:hover,.nav-link.nav-active{color:var(--teal);font-weight:700;}
+    .btn-cta-nav{background:linear-gradient(135deg,#0ABFA3,#1E6FBF);color:#fff;font-weight:700;font-size:0.82rem;border:none;border-radius:9px;padding:9px 20px;cursor:pointer;box-shadow:0 2px 12px rgba(10,191,163,0.25);transition:box-shadow .2s,transform .2s;text-decoration:none;display:inline-block;}
+    .btn-cta-nav:hover{box-shadow:0 4px 18px rgba(10,191,163,0.35);transform:translateY(-1px);}
+    .page-hero{background:linear-gradient(160deg,#F0F7FF 0%,#FAFCFF 40%,#F0FAF8 100%);padding:130px 0 80px;position:relative;overflow:hidden;}
+    .page-hero-dot{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,rgba(10,191,163,0.10) 1.5px,transparent 1.5px);background-size:32px 32px;}
+    .section{padding:90px 0;}
+    .section-alt{background:var(--bg);}
+    .container{max-width:1160px;margin:0 auto;padding:0 24px;}
+    .eyebrow{font-size:0.7rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:10px;}
+    .sec-title{font-size:clamp(1.9rem,3vw,2.7rem);font-weight:900;color:var(--navy);letter-spacing:-0.03em;line-height:1.18;}
+    .sec-desc{font-size:0.97rem;color:var(--sub);line-height:1.82;margin-top:12px;}
+    .divider{width:48px;height:3px;background:linear-gradient(90deg,#0ABFA3,#1E6FBF);border-radius:3px;margin:14px 0;}
+    .slide-img-box{border-radius:18px;overflow:hidden;box-shadow:0 8px 48px rgba(10,22,40,.10);border:1px solid var(--border);margin-bottom:22px;}
+    .slide-img-box img{width:100%;display:block;}
+    .slide-caption{background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px 28px;font-size:.94rem;color:var(--sub);line-height:1.88;box-shadow:0 2px 10px rgba(10,22,40,.04);}
+    .slide-caption strong{color:var(--navy);}
+    .slide-eyebrow{font-size:.68rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin-bottom:8px;}
+    .slide-title{font-size:1.12rem;font-weight:900;color:var(--navy);letter-spacing:-.02em;margin-bottom:16px;}
+    /* Market stat cards */
+    .mstat-card{background:#fff;border:1.5px solid var(--border);border-radius:20px;padding:28px;text-align:center;box-shadow:0 2px 14px rgba(10,22,40,.04);}
+    .mstat-num{font-size:2.4rem;font-weight:900;color:var(--navy);letter-spacing:-0.03em;line-height:1;}
+    .mstat-num em{color:var(--teal);font-style:normal;}
+    .mstat-label{font-size:0.82rem;color:var(--sub);margin-top:6px;font-weight:600;line-height:1.5;}
+    /* Process dark bg */
+    .process-bg{background:linear-gradient(160deg,#0A1628 0%,#0d2040 100%);}
+    .step-card{flex:1;min-width:0;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:26px;transition:background .2s,border-color .2s;}
+    .step-card:hover{background:rgba(10,191,163,0.06);border-color:rgba(10,191,163,0.2);}
+    .step-num{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#0ABFA3,#1E6FBF);display:flex;align-items:center;justify-content:center;font-size:0.82rem;font-weight:900;color:#fff;margin-bottom:14px;}
+    .step-title{font-size:0.95rem;font-weight:800;color:#fff;margin-bottom:8px;}
+    .step-desc{font-size:0.81rem;color:rgba(255,255,255,0.78);line-height:1.72;}
+    /* Vision closing */
+    .vision-closing{background:linear-gradient(160deg,#0A1628 0%,#0d2040 100%);padding:100px 0;position:relative;overflow:hidden;}
+    .footer-bg{background:#1A3050;border-top:1px solid rgba(255,255,255,0.05);}
+    .footer-link{font-size:0.82rem;color:rgba(255,255,255,0.88);cursor:pointer;transition:color .2s;display:block;margin-bottom:6px;text-decoration:none;}
+    .footer-link:hover{color:#0ABFA3;}
+    .fu{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease;}
+    .fu.vis{opacity:1;transform:translateY(0);}
+    @media(max-width:768px){.section{padding:60px 0;}.slide-caption{padding:16px 20px;}}
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container">
+    <div class="flex items-center justify-between h-16">
+      <a href="index.html"><img src="로고-AX 덴탈그룹.png" alt="AX Dental Group" style="height:36px;object-fit:contain;"></a>
+      <div class="hidden md:flex items-center gap-6">
+        <a class="nav-link" href="index.html">홈</a>
+        <a class="nav-link" href="platform.html">플랫폼 소개</a>
+        <a class="nav-link" href="services.html">AI 서비스</a>
+        <a class="nav-link" href="cases.html">도입 사례</a>
+        <a class="nav-link nav-active" href="market.html">시장 기회</a>
+        <a class="nav-link" href="orgchart.html">조직도</a>
+        <a class="nav-link" href="../12-4 디지털스마일치과/proposal.html" target="_blank">협업 제안서</a>
+        <a class="btn-cta-nav" href="contact.html">도입 문의</a>
+      </div>
+      <button class="md:hidden text-gray-600" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden pb-4 border-t" style="border-color:var(--border);">
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="index.html">홈</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="platform.html">플랫폼 소개</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="services.html">AI 서비스</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="cases.html">도입 사례</a>
+      <a class="block py-2.5 text-sm font-bold" style="color:var(--teal);border-bottom:1px solid var(--border);" href="market.html">시장 기회</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="orgchart.html">조직도</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="../12-4 디지털스마일치과/proposal.html" target="_blank">협업 제안서</a>
+      <a class="block py-2.5 text-sm font-bold" style="color:var(--teal);" href="contact.html">도입 문의</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-dot"></div>
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="fu">
+      <div class="eyebrow">Market Opportunity</div>
+      <h1 class="sec-title" style="font-size:clamp(2.2rem,4vw,3.5rem);">글로벌 200조 시장<br><span style="background:linear-gradient(90deg,#0ABFA3,#1E6FBF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">시장 기회</span></h1>
+      <div class="divider"></div>
+      <p class="sec-desc" style="max-width:580px;">SaaS 수익 모델, TAM/SAM/SOM 분석, 글로벌 확장 전략, 1조 유니콘 로드맵을 소개합니다.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- MARKET STATS -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="text-center mb-12 fu">
+      <div class="eyebrow">Market Size</div>
+      <h2 class="sec-title">거대한 시장이 기다립니다</h2>
+      <div class="divider mx-auto"></div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="mstat-card fu">
+        <div style="font-size:0.72rem;font-weight:800;color:var(--teal);letter-spacing:0.1em;margin-bottom:10px;">🌏 글로벌 TAM</div>
+        <div class="mstat-num"><em>200</em>조+</div>
+        <div class="mstat-label">전 세계 약 120만 개 치과<br>연간 총 시장 규모</div>
+      </div>
+      <div class="mstat-card fu" style="transition-delay:.08s;border-color:rgba(10,191,163,0.3);box-shadow:0 4px 28px rgba(10,191,163,0.1);">
+        <div style="font-size:0.72rem;font-weight:800;color:var(--teal);letter-spacing:0.1em;margin-bottom:10px;">🇰🇷 국내 SOM</div>
+        <div class="mstat-num"><em>1</em>조+</div>
+        <div class="mstat-label">한국 약 2만 개 치과<br>월 50만 원 SaaS 기준</div>
+      </div>
+      <div class="mstat-card fu" style="transition-delay:.16s;">
+        <div style="font-size:0.72rem;font-weight:800;color:var(--blue);letter-spacing:0.1em;margin-bottom:10px;">🦄 목표 기업 가치</div>
+        <div class="mstat-num" style="color:var(--blue);"><em style="color:var(--blue);">1</em>조</div>
+        <div class="mstat-label">아시아 플랫폼 선정 시<br>유니콘 달성 목표</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SLIDE 10 -->
+<section class="section">
+  <div class="container">
+    <div class="fu">
+      <div class="slide-eyebrow">Business Model</div>
+      <div class="slide-title">수익 모델 및 폭발적인 시장 잠재력</div>
+      <div class="slide-img-box"><img src="AX덴탈그룹 소개자료/슬라이드10.PNG" alt="수익 모델 및 시장 잠재력"></div>
+      <div class="slide-caption"><p>AX Dental의 수익 모델은 <strong>월정액 B2B SaaS</strong>를 핵심으로 하여, 추가 서비스 수익이 더해지는 다층 구조입니다.<br><br><strong>Basic 플랜 (월 50만 원)</strong>: AI 구강 진단 리포트와 기본 경영 대시보드를 포함합니다. 디지털 전환에 막 나선 소규모 치과에게 적합한 진입 플랜입니다. 이 단계에서도 치료 동의율 향상 효과를 즉시 체감할 수 있습니다.<br><br><strong>Professional 플랜 (월 150만 원)</strong>: Basic에 경영 AI(노쇼 예측·보험 청구·수익 분석), 환자 AI(Treatment Story Engine·LTV 분석), 마케팅 AI(SEO·AIO 콘텐츠 자동화)가 추가됩니다. 대부분의 치과에서 가장 높은 ROI를 실현하는 추천 플랜입니다.<br><br><strong>Enterprise 플랜 (월 300만 원)</strong>: 다지점 통합 관리, 전담 데이터 컨설팅, API 연동을 포함하는 대형 병원 네트워크용 플랜입니다.<br><br>SaaS 구독 외에도 <strong>데이터 분석 컨설팅, AI 마케팅 대행, AI 상담 서비스</strong>를 통해 추가 수익을 창출합니다.<br><br>시장 잠재력은 압도적입니다. 국내 약 2만 개 치과가 Professional 플랜(월 150만 원)을 구독한다고 가정하면 연간 잠재 매출이 3조 6천억 원에 달합니다. 보수적으로 시장 침투율 3%를 가정해도 연간 1,080억 원의 매출 규모입니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 24 -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="fu">
+      <div class="slide-eyebrow">SaaS Revenue Model</div>
+      <div class="slide-title">월정액 기반의 탄탄한 B2B SaaS 수익 비즈니스 모델</div>
+      <div class="slide-img-box"><img src="AX덴탈그룹 소개자료/슬라이드24.PNG" alt="B2B SaaS 수익 모델"></div>
+      <div class="slide-caption"><p>AX Dental의 B2B SaaS 비즈니스 모델은 치과 산업에서 가장 안정적인 수익 구조를 설계했습니다. 월정액 구독 기반의 SaaS는 치과 원장의 의사결정 구조와 완벽하게 맞아떨어집니다. 치과는 이미 치과용 체어, EMR 소프트웨어, 영상 장비 등 다수의 월정액 서비스를 구독하는 데 익숙합니다.<br><br><strong>Basic (월 50만 원)</strong> — AI 진단 리포트 + 기본 대시보드<br><strong>Professional (월 150만 원)</strong> — Basic + 경영 AI + 환자 AI + 마케팅 AI (전체 플랫폼)<br><strong>Enterprise (월 300만 원)</strong> — 대형 병원 네트워크 + 데이터 분석 + 통합 관리 OS<br><br>SaaS 구독의 강점은 <strong>예측 가능한 반복 매출(MRR)</strong>에 있습니다. 한 번 도입된 치과는 데이터가 축적될수록 이탈 비용이 높아지는 Lock-in 효과가 발생합니다. 환자 데이터, 경영 데이터가 AX Dental OS 안에 쌓일수록 다른 솔루션으로 전환하는 것이 사실상 불가능해집니다.<br><br><strong>추가 수익원 3가지</strong>:<br>첫째, 데이터 분석 컨설팅: 분기별 심층 경영 분석 리포트와 전략 컨설팅 서비스입니다.<br>둘째, AI 마케팅 대행: SEO·AIO 콘텐츠 제작 및 광고 운용 대행입니다.<br>셋째, AI 상담 서비스: 환자 유입 후 AI 챗봇 기반 사전 상담 및 예약 최적화 서비스입니다.<br><br>이 세 가지 추가 수익원이 SaaS 기반 위에 더해지면 고객당 연간 평균 매출(ARPU)이 2배 이상으로 확대됩니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 25 -->
+<section class="section">
+  <div class="container">
+    <div class="fu">
+      <div class="slide-eyebrow">TAM / SAM / SOM</div>
+      <div class="slide-title">데이터 인프라가 지배할 압도적인 글로벌 시장 규모</div>
+      <div class="slide-img-box"><img src="AX덴탈그룹 소개자료/슬라이드25.PNG" alt="TAM/SAM/SOM"></div>
+      <div class="slide-caption"><p>AX Dental이 공략하는 시장의 규모는 세 가지 차원에서 분석할 수 있습니다.<br><br><strong>TAM (Total Addressable Market — 전체 시장)</strong><br>전 세계에는 약 120만 개의 치과가 있습니다. 이들이 경영 및 AI 솔루션에 지출하는 연간 총 시장 규모는 200조 원을 넘습니다. 미국, 유럽, 일본, 동남아, 중국을 합산한 글로벌 치과 AI 플랫폼 시장입니다.<br><br><strong>SAM (Serviceable Addressable Market — 실제 서비스 가능 시장)</strong><br>디지털 전환이 어느 정도 완료되어 AI 솔루션 도입에 적극적인 치과들을 대상으로 합니다. 한국·일본·싱가포르·대만 등 아시아 주요 국가의 치과 약 12만 개가 이 범위에 해당하며, 연간 시장 규모는 20조 원 수준으로 추정됩니다.<br><br><strong>SOM (Serviceable Obtainable Market — 실제 확보 가능 시장)</strong><br>파일럿 이후 3년 내 국내 확보 목표 시장입니다. 한국 약 2만 개 치과 중 월 50만 원 Basic 플랜 기준 3% 침투 시 연간 360억 원, Professional 플랜(150만 원) 기준 1% 침투 시 연간 360억 원 규모입니다.<br><br><strong>글로벌 확장 로드맵</strong>: Step 1 한국(Testbed 구축 및 레퍼런스 확보) → Step 2 일본·동남아(디지털 전환 급성장 시장 선점) → Step 3 미국(DSO 네트워크 통한 대규모 진출). 각 단계에서 직전 단계의 성공 데이터가 다음 단계 진출의 세일즈 무기가 됩니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 11 -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="fu">
+      <div class="slide-eyebrow">Global Strategy</div>
+      <div class="slide-title">AX Dental: 1조 유니콘을 향한 글로벌 확장 전략</div>
+      <div class="slide-img-box"><img src="AX덴탈그룹 소개자료/슬라이드11.PNG" alt="글로벌 확장 전략"></div>
+      <div class="slide-caption"><p>AX Dental의 글로벌 확장 전략은 <strong>단계적이고 데이터 기반</strong>으로 설계되었습니다. 무리하게 한 번에 글로벌 시장을 공략하는 대신, 각 단계에서 검증된 성공 사례를 기반으로 다음 단계 진출의 위험을 최소화합니다.<br><br><strong>Phase 1: 파일럿 완성 (현재~6개월)</strong><br>대전 디지털스마일치과를 세계 최초 AI 운영 치과 실증 모델로 완성합니다. +33.3% 치료 동의율, -40% 노쇼율, +3,000만 원 보험 청구 향상 등 명확한 KPI 데이터를 확보합니다. 이 데이터가 이후 모든 세일즈의 핵심 레퍼런스가 됩니다.<br><br><strong>Phase 2: 국내 100개 치과 확보 (6개월~2년)</strong><br>파일럿 성공 데이터를 기반으로 전국 치과 확산에 집중합니다. 치과 네트워크(공동 구매 조합, 치과 학술 단체)를 통한 B2B 세일즈를 강화하고, 얼리 어답터 치과들의 성과 사례를 적극 홍보합니다. 이 단계에서 기업 가치 500억 원 달성을 목표로 합니다.<br><br><strong>Phase 3: 아시아 진출 (2년~4년)</strong><br>일본, 싱가포르, 대만, 베트남 등 디지털 전환 속도가 빠른 아시아 시장에 진출합니다. 국내 레퍼런스와 현지 파트너십을 결합하여 빠르게 시장을 선점합니다.<br><br><strong>Phase 4: 미국 DSO 진입 (4년~)</strong><br>세계 최대 치과 시장인 미국의 DSO(Dental Service Organization) 네트워크에 진입합니다. DSO 1개 계약이 수백 개 치과의 동시 도입으로 이어지는 확장성이 핵심입니다. 이 단계에서 기업 가치 1조 원(유니콘) 달성을 목표로 합니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 26 -->
+<section class="section">
+  <div class="container">
+    <div class="fu">
+      <div class="slide-eyebrow">Data Flywheel & Valuation</div>
+      <div class="slide-title">1조 유니콘을 향한 플라이휠과 기업가치 성장 궤적</div>
+      <div class="slide-img-box"><img src="AX덴탈그룹 소개자료/슬라이드26.PNG" alt="Data Flywheel & Valuation Path"></div>
+      <div class="slide-caption"><p>AX Dental의 경쟁 우위는 단순한 기술이 아닌 <strong>데이터 네트워크 효과</strong>에서 나옵니다. 더 많은 치과가 플랫폼을 사용할수록 더 많은 데이터가 축적되고, 더 많은 데이터가 AI 정확도를 높이며, 높아진 정확도가 더 많은 치과를 유입시키는 선순환 구조입니다. 이것이 바로 <strong>Data Flywheel(데이터 플라이휠)</strong>입니다.<br><br>플라이휠의 각 단계는 다음과 같습니다:<br>1. 플랫폼 도입 병원 증가 → 임상·경영·마케팅 데이터 폭발적 축적<br>2. 방대한 데이터 → AI 알고리즘 정확도 지속 향상<br>3. 높은 정확도 → 치과 이탈 방지(데이터 Lock-in 효과) → 추가 병원 유입<br>4. 반복: 플라이휠이 빠르게 돌수록 후발 경쟁자가 따라잡기 불가능한 데이터 해자(Moat) 형성<br><br><strong>기업가치 성장 궤적</strong>은 이 플라이휠과 정확히 연동됩니다:<br>- 초기 단계: 파일럿 1~2개 치과, 기업 가치 100억 원 수준<br>- 파일럿 성공: 레퍼런스 확보, 투자 유치 가속화, 기업 가치 500억 원<br>- 전국 치과망 확보 (100개~): MRR 증가, 데이터 축적 가속화, 기업 가치 3,000억 원<br>- 아시아 플랫폼 선정: 글로벌 투자자 유입, 기업 가치 1조 원(유니콘) 달성<br><br>이 성장 궤적은 SaaS 기업의 전형적인 Hockey Stick 성장 곡선과 정확히 일치하며, 데이터 플라이휠이 일단 충분한 속도를 얻으면 자기 강화적으로 가속됩니다.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- GLOBAL EXPANSION STEPS (dark bg) -->
+<section class="process-bg" style="padding:90px 0;">
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="text-center mb-12 fu">
+      <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#0ABFA3;margin-bottom:10px;">Global Expansion</div>
+      <h2 style="font-size:clamp(1.9rem,3vw,2.7rem);font-weight:900;color:#fff;letter-spacing:-0.03em;line-height:1.18;">단계적 글로벌 확장 로드맵</h2>
+    </div>
+    <div class="flex flex-col md:flex-row items-start gap-4 fu">
+      <div class="step-card"><div class="step-num">01</div><div class="step-title">🇰🇷 한국 파일럿</div><div class="step-desc">대전 디지털스마일치과를 시작으로 국내 AI 치과 실증 모델 완성. 검증된 데이터로 세일즈 레퍼런스 구축.</div></div>
+      <div class="hidden md:flex items-center" style="padding-top:50px;color:rgba(10,191,163,0.4);font-size:1.8rem;">›</div>
+      <div class="step-card"><div class="step-num">02</div><div class="step-title">🏥 국내 100개 확보</div><div class="step-desc">파일럿 성공 데이터 기반으로 전국 치과망 확대. 기업 가치 500억→3,000억 달성 목표.</div></div>
+      <div class="hidden md:flex items-center" style="padding-top:50px;color:rgba(10,191,163,0.4);font-size:1.8rem;">›</div>
+      <div class="step-card"><div class="step-num">03</div><div class="step-title">🌏 아시아 진출</div><div class="step-desc">일본·동남아 급성장 시장 선점. 디지털 전환 가속화 지역의 선도 플랫폼으로 포지셔닝.</div></div>
+      <div class="hidden md:flex items-center" style="padding-top:50px;color:rgba(10,191,163,0.4);font-size:1.8rem;">›</div>
+      <div class="step-card"><div class="step-num">04</div><div class="step-title">🇺🇸 미국 DSO</div><div class="step-desc">세계 최대 치과 시장인 미국 DSO(Dental Service Organization) 네트워크 진출. 유니콘 1조 달성.</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- VISION SLIDES -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="fu">
+      <div class="slide-eyebrow">Beyond Dental · Vision</div>
+      <div class="slide-title">Beyond Dental, Towards Medical AI Platform</div>
+      <div class="slide-img-box"><img src="AX덴탈그룹 소개자료/슬라이드12.PNG" alt="Beyond Dental Vision"></div>
+      <div class="slide-caption"><p>AX Dental의 비전은 치과를 넘어 전체 의료 산업으로 확장됩니다. 이것이 단순한 원대한 포부가 아닌 구체적인 전략적 필연성을 가지는 이유가 있습니다.<br><br>치과는 의료 산업 중에서 <strong>데이터 수집과 AI 적용이 가장 용이한 영역</strong>입니다. 구강 영상이라는 표준화된 데이터 포맷, 반복적인 예방 진료 사이클, 미용과 기능이 결합된 치료 결정 과정 — 이 모든 요소가 AI 학습과 적용에 최적화되어 있습니다. 또한 치과는 건강보험 의존도가 상대적으로 낮아 비급여 마케팅의 자유도가 높습니다.<br><br>치과에서 완성한 <strong>AI 경영 플랫폼의 핵심 모듈들</strong>은 다른 의료 분야에 그대로 적용 가능합니다. 노쇼 예측 알고리즘은 정형외과, 피부과, 안과에도 동일하게 작동합니다. AI 보험 청구 최적화는 급여 비중이 높은 내과, 외과에서 오히려 더 큰 효과를 냅니다. 마케팅 AI와 Growth 플랫폼은 미용 의료(성형외과·피부과) 분야에서 폭발적인 수요가 예상됩니다.<br><br><strong>'Beyond Dental, Towards Medical AI Platform'</strong>은 AX Dental의 최종 비전입니다. 치과에서 검증된 AI 경영 OS를 의료 전체로 확장하여, 글로벌 의료 산업의 운영 패러다임을 바꾸는 플랫폼 기업이 되는 것. 그 출발점이 바로 지금입니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:linear-gradient(160deg,#0A1628 0%,#0d2040 100%);padding:100px 0;">
+  <div class="container">
+    <div class="fu text-center">
+      <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#0ABFA3;margin-bottom:16px;">Closing Vision</div>
+      <div class="slide-img-box" style="max-width:860px;margin:0 auto 32px;">
+        <img src="AX덴탈그룹 소개자료/슬라이드27.PNG" alt="AI가 운영하는 치과">
+      </div>
+      <p style="font-size:0.95rem;color:rgba(255,255,255,0.82);line-height:1.88;max-width:680px;margin:0 auto;">
+        치과 산업은 지금 거대한 전환점 위에 서 있습니다. 단순히 치아를 치료하는 '진료 서비스업'에서, 환자의 구강 건강 데이터를 기반으로 가치를 창출하는 <strong style="color:#0ABFA3;">'데이터 산업'</strong>으로 진화하는 것입니다.<br><br>이 전환을 주도하는 기업이 치과 AI 시장의 승자가 됩니다. 구글이 검색 데이터로, 아마존이 쇼핑 데이터로 세계를 지배했듯이, 치과 임상·경영 데이터를 가장 많이, 가장 잘 활용하는 플랫폼이 글로벌 치과 AI 시장을 지배하게 됩니다.<br><br><strong style="color:#0ABFA3;">AX Dental Group은 세계 최초의 Dental AI Operating System을 완성합니다.</strong> Clinical AI로 진단 정확도를 높이고, Patient AI로 치료 동의율을 극대화하며, Management AI로 경영 효율을 자동화하고, Growth AI로 지속적인 성장을 만들어냅니다. 이 네 가지 AI 레이어가 통합 데이터 플랫폼 위에서 작동하는 완전한 AI 치과 운영 시스템입니다.<br><br>지금 이 순간, 파일럿 치과와 함께 역사를 만들어가고 있습니다. 대전 디지털스마일치과에서 시작된 이 실험이 성공하면, 국내 2만 개 치과, 아시아 12만 개 치과, 글로벌 120만 개 치과로 확장됩니다. 그 여정에 함께하실 파트너 치과와 투자자를 찾고 있습니다. AI가 운영하는 치과의 미래, AX덴탈그룹과 함께 만들어가시기 바랍니다.
+      </p>
+      <div class="flex gap-4 justify-center mt-10 flex-wrap">
+        <a href="contact.html" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#0ABFA3,#1E6FBF);color:#fff;font-weight:700;font-size:0.9rem;border-radius:12px;padding:14px 30px;text-decoration:none;box-shadow:0 4px 20px rgba(10,191,163,0.28);">글로벌 플랫폼 함께하기 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer-bg" style="padding:48px 0 32px;">
+  <div class="container">
+    <div class="flex flex-col md:flex-row justify-between gap-10">
+      <div>
+        <a href="index.html"><img src="로고-AX 덴탈그룹.png" alt="AX Dental Group" style="height:34px;object-fit:contain;margin-bottom:16px;display:block;"></a>
+        <p style="font-size:0.82rem;color:rgba(255,255,255,0.85);line-height:1.8;max-width:240px;">치과 산업 AI 혁신을 선도합니다.<br>"AI가 운영하는 치과"를 함께 만들어 갑니다.</p>
+      </div>
+      <div class="flex gap-14">
+        <div>
+          <div style="font-size:0.7rem;font-weight:800;color:rgba(255,255,255,0.85);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px;">메뉴</div>
+          <a class="footer-link" href="platform.html">플랫폼 소개</a>
+          <a class="footer-link" href="services.html">AI 서비스</a>
+          <a class="footer-link" href="cases.html">도입 사례</a>
+          <a class="footer-link" href="market.html">시장 기회</a>
+          <a class="footer-link" href="../12-4 디지털스마일치과/proposal.html" target="_blank">협업 제안서</a>
+        </div>
+        <div>
+          <div style="font-size:0.7rem;font-weight:800;color:rgba(255,255,255,0.85);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px;">문의</div>
+          <a class="footer-link" href="contact.html">도입 문의</a>
+          <a class="footer-link" href="cases.html">파트너 사례</a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.12);margin-top:40px;padding-top:22px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;">
+      <p style="font-size:0.73rem;color:rgba(255,255,255,0.7);">© 2025 AX덴탈그룹. All rights reserved.</p>
+      <p style="font-size:0.73rem;color:rgba(255,255,255,0.7);">Powered by <span style="color:#0ABFA3;font-weight:700;">AI</span></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fu').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

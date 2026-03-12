@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>플랫폼 소개 — AX덴탈그룹</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Pretendard','Noto Sans KR',sans-serif;background:#fff;color:#0A1628;-webkit-font-smoothing:antialiased;}
+    :root{--navy:#0A1628;--navy2:#162540;--teal:#0ABFA3;--teal-light:#E6FAF7;--blue:#1E6FBF;--blue-light:#EBF3FD;--gold:#B8960C;--gold-light:#FBF7E8;--sub:#243B55;--sub2:#3D5570;--border:#E4EAF2;--bg:#F7F9FC;}
+    .nav{background:rgba(244,248,253,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);position:fixed;top:0;left:0;right:0;z-index:100;}
+    .nav-link{color:var(--sub);font-size:0.85rem;font-weight:500;transition:color .2s;cursor:pointer;text-decoration:none;}
+    .nav-link:hover,.nav-link.nav-active{color:var(--teal);font-weight:700;}
+    .btn-cta-nav{background:linear-gradient(135deg,#0ABFA3,#1E6FBF);color:#fff;font-weight:700;font-size:0.82rem;border:none;border-radius:9px;padding:9px 20px;cursor:pointer;box-shadow:0 2px 12px rgba(10,191,163,0.25);transition:box-shadow .2s,transform .2s;text-decoration:none;display:inline-block;}
+    .btn-cta-nav:hover{box-shadow:0 4px 18px rgba(10,191,163,0.35);transform:translateY(-1px);}
+    .page-hero{background:linear-gradient(160deg,#F0F7FF 0%,#FAFCFF 40%,#F0FAF8 100%);padding:130px 0 80px;position:relative;overflow:hidden;}
+    .page-hero-dot{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,rgba(10,191,163,0.10) 1.5px,transparent 1.5px);background-size:32px 32px;}
+    .section{padding:90px 0;}
+    .section-alt{background:var(--bg);}
+    .container{max-width:1160px;margin:0 auto;padding:0 24px;}
+    .eyebrow{font-size:0.7rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:10px;}
+    .sec-title{font-size:clamp(1.9rem,3vw,2.7rem);font-weight:900;color:var(--navy);letter-spacing:-0.03em;line-height:1.18;}
+    .sec-desc{font-size:0.97rem;color:var(--sub);line-height:1.82;margin-top:12px;}
+    .divider{width:48px;height:3px;background:linear-gradient(90deg,#0ABFA3,#1E6FBF);border-radius:3px;margin:14px 0;}
+    .slide-img-box{border-radius:18px;overflow:hidden;box-shadow:0 8px 48px rgba(10,22,40,.10);border:1px solid var(--border);margin-bottom:22px;}
+    .slide-img-box img{width:100%;display:block;}
+    .slide-caption{background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px 28px;font-size:.94rem;color:var(--sub);line-height:1.88;box-shadow:0 2px 10px rgba(10,22,40,.04);}
+    .slide-caption strong{color:var(--navy);}
+    .slide-eyebrow{font-size:.68rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin-bottom:8px;}
+    .slide-title{font-size:1.12rem;font-weight:900;color:var(--navy);letter-spacing:-.02em;margin-bottom:16px;}
+    .footer-bg{background:#1A3050;border-top:1px solid rgba(255,255,255,0.05);}
+    .footer-link{font-size:0.82rem;color:rgba(255,255,255,0.88);cursor:pointer;transition:color .2s;display:block;margin-bottom:6px;text-decoration:none;}
+    .footer-link:hover{color:#0ABFA3;}
+    .fu{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease;}
+    .fu.vis{opacity:1;transform:translateY(0);}
+    @media(max-width:768px){.section{padding:60px 0;}.slide-caption{padding:16px 20px;}}
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container">
+    <div class="flex items-center justify-between h-16">
+      <a href="index.html"><img src="로고-AX 덴탈그룹.png" alt="AX Dental Group" style="height:36px;object-fit:contain;"></a>
+      <div class="hidden md:flex items-center gap-6">
+        <a class="nav-link" href="index.html">홈</a>
+        <a class="nav-link nav-active" href="platform.html">플랫폼 소개</a>
+        <a class="nav-link" href="services.html">AI 서비스</a>
+        <a class="nav-link" href="cases.html">도입 사례</a>
+        <a class="nav-link" href="market.html">시장 기회</a>
+        <a class="nav-link" href="orgchart.html">조직도</a>
+        <a class="nav-link" href="../12-4 디지털스마일치과/proposal.html" target="_blank">협업 제안서</a>
+        <a class="btn-cta-nav" href="contact.html">도입 문의</a>
+      </div>
+      <button class="md:hidden text-gray-600" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden pb-4 border-t" style="border-color:var(--border);">
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="index.html">홈</a>
+      <a class="block py-2.5 text-sm font-bold" style="color:var(--teal);border-bottom:1px solid var(--border);" href="platform.html">플랫폼 소개</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="services.html">AI 서비스</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="cases.html">도입 사례</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="market.html">시장 기회</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="orgchart.html">조직도</a>
+      <a class="block py-2.5 text-sm" style="color:var(--sub);border-bottom:1px solid var(--border);" href="../12-4 디지털스마일치과/proposal.html" target="_blank">협업 제안서</a>
+      <a class="block py-2.5 text-sm font-bold" style="color:var(--teal);" href="contact.html">도입 문의</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-dot"></div>
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="fu">
+      <div class="eyebrow">Platform Overview</div>
+      <h1 class="sec-title" style="font-size:clamp(2.2rem,4vw,3.5rem);">AX Dental OS<br><span style="background:linear-gradient(90deg,#0ABFA3,#1E6FBF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">플랫폼 소개</span></h1>
+      <div class="divider"></div>
+      <p class="sec-desc" style="max-width:580px;">세계 최초 치과 AI 경영 플랫폼 AX Dental OS의 구조, 패러다임 전환, 경쟁 포지셔닝을 상세히 소개합니다.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- SLIDE 1 -->
+<section class="section">
+  <div class="container">
+    <div class="fu">
+      <div class="slide-eyebrow">Platform Introduction</div>
+      <div class="slide-title">세계 최초 치과 AI 경영 플랫폼</div>
+      <div class="slide-img-box"><img src="AX덴탈그룹 소개자료/슬라이드1.PNG" alt="세계 최초 치과 AI 경영 플랫폼"></div>
+      <div class="slide-caption"><p>AX Dental OS는 세계 최초의 치과 AI 경영 플랫폼입니다. 기존의 치과 경영은 원장이 진료와 경영을 동시에 책임져야 하는 구조였습니다. 예약 관리부터 직원 인사, 보험 청구, 마케팅까지 모든 업무가 원장의 어깨에 집중되어 있었고, 이로 인해 원장은 본업인 진료에 온전히 집중하기 어려웠습니다. 결국 진료의 질과 경영 효율 모두 저하되는 악순환이 반복되어 왔습니다.<br><br>AX Dental OS는 이 구조적 문제를 AI로 근본 해결합니다. <strong>임상 AI</strong>가 CT·파노라마 영상을 자동 분석하고, <strong>환자 AI</strong>가 치료 동의율을 높이는 시각화 자료를 생성합니다. <strong>경영 AI</strong>는 노쇼 예측·수익 분석·보험 청구 최적화를 담당하며, <strong>성장 AI</strong>는 SEO·AIO 기반 콘텐츠 마케팅을 완전 자동화합니다. 네 가지 AI 레이어가 통합 데이터 플랫폼 위에서 실시간 연동되어 치과 운영 전 영역을 커버합니다.<br><br>원장은 이제 진료에만 집중하면 됩니다. AI가 경영 전반을 운영하고, 데이터가 의사결정을 내리는 새로운 패러다임이 시작됩니다. AX Dental OS는 단순한 소프트웨어 도구가 아닌, 치과 산업의 운영 방식 자체를 혁신하는 플랫폼입니다. 세계 최초로 임상부터 성장까지 모든 영역을 통합한 Dental AI Operating System의 시대를 AX덴탈그룹과 함께 열어가시기 바랍니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 2 -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="fu">
+      <div class="slide-eyebrow">Industry Paradigm</div>
+      <div class="slide-title">치과 산업의 패러다임 변화</div>
+      <div class="slide-img-box"><img src="AX덴탈그룹 소개자료/슬라이드2.PNG" alt="치과 산업의 패러다임 변화"></div>
+      <div class="slide-caption"><p>치과 산업은 크게 세 단계의 진화 과정을 거쳐왔습니다. <strong>1단계 Traditional(1990년대)</strong>은 수기 차트와 아날로그 경영이 중심이었고, 환자 관리와 예약은 모두 전화와 종이 기록에 의존했습니다. 효율성은 낮았지만, 당시에는 이것이 유일한 방법이었습니다.<br><br><strong>2단계 Digital(2010년대)</strong>에는 EMR(전자 의무 기록), 디지털 X-ray, 3D CT, 구강 스캐너 등의 디지털 장비가 보급되었습니다. 진단의 정확도와 기록 관리 효율이 크게 향상되었으나, 이 단계에서도 경영 의사결정은 여전히 원장의 경험과 직감에 의존했습니다. 시스템들이 각각 분리되어 데이터의 통합 활용이 어려웠습니다.<br><br><strong>3단계 AI-Driven(2020년대~)</strong>은 AI가 진단·경영·마케팅을 통합 운영하는 시대입니다. 글로벌 선도 치과들은 이미 이 단계로 진입 중이며, 데이터가 경영을 이끄는 새로운 질서가 형성되고 있습니다. 현재 국내 치과의 대부분은 아직 2단계와 3단계 사이 어딘가에 머물러 있습니다.<br><br>AX Dental Group은 국내 치과들이 AI-Driven 단계로 신속하게 도약할 수 있도록 완성된 플랫폼을 제공합니다. 이 거대한 패러다임 전환의 흐름에 올라타는 치과와 그렇지 못한 치과의 격차는 앞으로 더욱 벌어질 것입니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3 -->
+<section class="section">
+  <div class="container">
+    <div class="fu">
+      <div class="slide-eyebrow">Market Problem</div>
+      <div class="slide-title">기존 솔루션의 한계</div>
+      <div class="slide-img-box"><img src="AX덴탈그룹 소개자료/슬라이드3.PNG" alt="기존 솔루션의 한계"></div>
+      <div class="slide-caption"><p>현재 글로벌 치과 AI 시장에는 다양한 솔루션이 존재합니다. Overjet과 Pearl은 AI 영상 진단 분야의 선두 주자이며, DentalMonitoring은 교정 환자 원격 모니터링에 특화되어 있습니다. Carestack과 Dentrix 같은 솔루션은 병원 경영 관리에 초점을 맞추고 있습니다.<br><br>그러나 이들은 모두 <strong>파편화된 Point Solution</strong>이라는 근본적인 한계를 안고 있습니다. 진단 AI 솔루션은 경영 데이터와 연결되지 않고, 경영 솔루션은 임상 데이터를 활용하지 못합니다. 각각의 시스템이 데이터 사일로를 형성하여 통합적인 인사이트 도출이 불가능합니다.<br><br>실제 치과 현장에서는 이로 인해 심각한 문제가 발생합니다. 진단 AI가 우수한 치료 계획을 세워도, 환자의 예약 이력이나 LTV 데이터와 연동되지 않아 마케팅 최적화에 활용하지 못합니다. 보험 청구 시스템은 임상 기록과 별도로 운영되어 청구 누락이 빈번하게 발생합니다. 여러 솔루션을 각각 구독하다 보니 월 비용도 상당합니다.<br><br>AX Dental OS는 이 모든 파편화 문제를 해결하는 <strong>통합 플랫폼</strong>입니다. 임상·환자·경영·성장의 모든 데이터가 하나의 플랫폼 안에서 연동되어, 각 영역의 AI 엔진이 서로의 데이터를 활용하며 최적의 결과를 도출합니다. 더 이상 여러 솔루션을 따로 구독할 필요가 없습니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4 -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="fu">
+      <div class="slide-eyebrow">OS Architecture</div>
+      <div class="slide-title">AX Dental OS: AI가 운영하는 치과</div>
+      <div class="slide-img-box"><img src="AX덴탈그룹 소개자료/슬라이드4.PNG" alt="AX Dental OS 4-layer"></div>
+      <div class="slide-caption"><p>AX Dental OS의 핵심 아키텍처는 <strong>4개의 AI 레이어와 통합 데이터 플랫폼</strong>으로 구성됩니다. 각 레이어는 독립적으로 작동하는 동시에, 공유 데이터 플랫폼을 통해 실시간으로 연동됩니다.<br><br><strong>Layer 1: Clinical AI</strong>는 CT, 파노라마, 구강 영상 데이터를 분석하여 94.7% 정확도의 AI 구강 종합 진단 리포트를 자동 생성합니다. 충치 탐지, 치주 상태 평가, 임플란트 적합성 분석을 2.3초 만에 완료합니다.<br><br><strong>Layer 2: Patient AI</strong>는 Treatment Story Engine을 통해 환자의 현재 구강 상태와 치료 후 예상 결과를 시각화합니다. 73점에서 94점으로의 개선 과정을 직관적으로 보여주어 치료 동의율을 33% 이상 향상시킵니다.<br><br><strong>Layer 3: Management AI</strong>는 노쇼 예측(최대 40% 감소), 보험 청구 자동화(연간 3,000만 원+ 누락 탐지), HR Analytics, 수익률 분석 등 경영 전반을 AI가 책임집니다.<br><br><strong>Layer 4: Growth AI</strong>는 SEO·AIO 콘텐츠 자동 생성, 소셜 미디어 마케팅 자동화, 환자 LTV 분석 기반 채널 최적화를 수행합니다.<br><br>이 네 레이어 아래를 지탱하는 <strong>통합 Data Platform</strong>은 모든 임상·경영 데이터를 축적하여 AI 정확도를 지속적으로 향상시키는 플라이휠을 만들어냅니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 13 -->
+<section class="section">
+  <div class="container">
+    <div class="fu">
+      <div class="slide-eyebrow">Dental AI OS</div>
+      <div class="slide-title">단편적 진단 솔루션을 넘어, AI가 운영하는 치과의 미래</div>
+      <div class="slide-img-box"><img src="AX덴탈그룹 소개자료/슬라이드13.PNG" alt="Dental AI OS 인트로"></div>
+      <div class="slide-caption"><p>치과 AI의 진정한 가치는 단순한 영상 진단에 있지 않습니다. 현재 시장의 많은 AI 솔루션들이 'CT 영상에서 충치를 찾아낸다'는 Clinical AI 기능에만 집중하고 있습니다. 물론 이것도 중요한 기능이지만, 이것만으로는 치과 경영의 근본 문제를 해결할 수 없습니다.<br><br>AX Dental OS가 제시하는 <strong>Dental AI Operating System</strong>의 개념은 전혀 다른 차원의 접근입니다. 진단(Clinical AI)은 출발점에 불과합니다. 진단 결과를 환자에게 효과적으로 전달하여 치료 동의를 이끌어내는 Patient AI, 병원의 수익과 운영을 최적화하는 Management AI, 지속적인 성장을 자동화하는 Growth AI — 이 네 가지가 유기적으로 결합될 때 비로소 완전한 AI 치과 운영 시스템이 완성됩니다.<br><br>단편적 솔루션들을 조합하는 방식으로는 이 수준에 도달할 수 없습니다. 각 시스템이 분리되어 있으면 데이터 흐름이 끊기고, AI의 효과가 반감됩니다. AX Dental OS는 처음부터 통합을 전제로 설계된 플랫폼으로, 모든 데이터가 하나의 파이프라인 안에서 흐르며 각 AI 엔진이 서로를 강화합니다.<br><br>치과가 단순히 디지털 장비를 갖춘 병원에서 <strong>'AI가 운영하는 치과'</strong>로 진화하는 것, 그것이 AX Dental OS가 만들어가는 미래입니다. 원장은 진료에, AI는 경영 전반에 집중하는 이상적인 분업 구조를 실현합니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 14 -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="fu">
+      <div class="slide-eyebrow">Future Paradigm</div>
+      <div class="slide-title">치과 산업의 미래 패러다임 변화</div>
+      <div class="slide-img-box"><img src="AX덴탈그룹 소개자료/슬라이드14.PNG" alt="치과 산업의 미래 패러다임 변화"></div>
+      <div class="slide-caption"><p>두 번째 덱(Deck 2)에서 제시하는 치과 산업의 미래 패러다임 분석은 세 가지 레이어로 치과의 진화를 설명합니다.<br><br><strong>첫 번째 레이어: Traditional Dental</strong>은 의사의 경험과 직관에 의존하는 아날로그 경영입니다. 환자 관리는 전화와 종이 차트 중심이었고, 수익 분석은 월말 장부 정리에 그쳤습니다. 이 단계에서는 원장의 개인 역량이 병원의 경쟁력 전부였습니다.<br><br><strong>두 번째 레이어: Digital Dental</strong>은 EMR, 디지털 영상 장비, 구강 스캐너 등이 도입된 단계입니다. 데이터가 디지털화되기 시작했으나, 각 시스템이 분리되어 활용도가 제한적이었습니다. 국내 치과의 상당수가 현재 이 단계에 머물러 있습니다.<br><br><strong>세 번째 레이어: AI-Driven Dental</strong>은 AI가 진료·경영·마케팅을 통합 운영하는 단계입니다. 데이터가 실시간으로 분석되어 의사결정에 활용되고, 반복적인 경영 업무는 AI가 자동 처리합니다. 원장은 고부가가치 진료에만 집중하고, AI가 나머지를 책임지는 구조입니다.<br><br>AX Dental Group은 국내 치과들이 이 세 번째 단계로 신속하게 진입할 수 있도록 완성된 솔루션을 제공합니다. 이 전환의 흐름은 불가역적입니다. 글로벌 선도 치과들은 이미 AI-Driven 운영을 실현하고 있으며, 한국 치과 산업도 곧 이 흐름에 합류하게 될 것입니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 15 -->
+<section class="section">
+  <div class="container">
+    <div class="fu">
+      <div class="slide-eyebrow">Blue Ocean</div>
+      <div class="slide-title">현재 AI 솔루션의 한계와 가장 거대한 시장의 발견</div>
+      <div class="slide-img-box"><img src="AX덴탈그룹 소개자료/슬라이드15.PNG" alt="현재 AI 솔루션의 한계"></div>
+      <div class="slide-caption"><p>현재 글로벌 치과 AI 시장을 분석하면 명확한 패턴이 보입니다. Overjet, Pearl, VideaHealth, Diagnocat 등 글로벌 유니콘 기업들은 모두 <strong>Clinical AI(영상 진단)</strong> 영역에 집중되어 있습니다. X-ray 영상에서 충치를 자동 탐지하고, 치주 상태를 수치화하는 기술에 수억 달러가 투자되었습니다.<br><br>이는 분명 중요한 기술입니다. 그러나 여기서 결정적인 시장 인사이트가 발생합니다. 치과 수익의 관점에서 보면, 진단의 정확도보다 <strong>치료 동의율</strong>이 더 직접적인 매출 드라이버입니다. 아무리 정확하게 진단해도 환자가 치료를 거부하면 수익이 발생하지 않습니다. 그리고 치료 동의 이후의 노쇼율, 보험 청구 최적화, 마케팅 효율 — 이 모든 것이 실제 병원 수익에 더 큰 영향을 미칩니다.<br><br><strong>Management AI와 Growth AI는 여전히 거대한 블루오션</strong>입니다. Overjet이 연간 수천만 달러를 투자하고 있는 진단 AI 시장보다, 경영 AI와 성장 AI 시장의 잠재 규모가 훨씬 큽니다. 치과 1개당 월 매출에서 경영 비효율로 손실되는 금액이 진단 오류로 손실되는 금액보다 압도적으로 많기 때문입니다.<br><br>AX Dental Group은 이 블루오션을 정확히 겨냥합니다. Clinical AI를 기반으로 하되, Patient·Management·Growth AI까지 통합한 플랫폼 전략이 바로 AX Dental의 핵심 경쟁 우위입니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 16 -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="fu">
+      <div class="slide-eyebrow">Differentiation</div>
+      <div class="slide-title">전략적 차별화: Point Solution vs Platform OS</div>
+      <div class="slide-img-box"><img src="AX덴탈그룹 소개자료/슬라이드16.PNG" alt="전략적 차별화"></div>
+      <div class="slide-caption"><p>치과 원장들이 현재 사용하는 솔루션의 실태를 보면, 대부분 5~7가지의 서로 다른 시스템을 동시에 구독하고 있습니다. Overjet으로 X-ray를 분석하고, DentalMonitoring으로 교정 환자를 추적하며, Carestack이나 Dentrix로 예약을 관리하고, 별도의 마케팅 에이전시에 콘텐츠를 의뢰합니다. 이 모든 시스템을 합산하면 월 수백만 원의 구독료가 발생하고, 각 시스템 간에 데이터가 연동되지 않아 정작 중요한 통합 인사이트를 얻을 수 없습니다.<br><br><strong>Point Solution vs Platform OS</strong> — 이것이 경쟁의 핵심입니다. Point Solution은 특정 문제 하나를 잘 해결하지만, 그것만으로는 치과 경영의 전체 그림을 바꿀 수 없습니다. AX Dental OS는 처음부터 <strong>통합 플랫폼</strong>으로 설계되어, 한 번의 구독으로 진단부터 성장까지 모든 AI 기능을 제공합니다.<br><br>이는 단순히 편의성의 문제가 아닙니다. 통합 플랫폼이기 때문에 각 AI 엔진이 서로의 데이터를 공유하며 시너지를 만들어냅니다. 예를 들어, 진단 AI가 탐지한 치료 필요도 데이터가 Growth AI의 마케팅 콘텐츠 생성에 자동으로 반영됩니다. 환자 LTV 분석이 노쇼 예측 알고리즘을 개선합니다. 이러한 데이터 연동은 분리된 Point Solution들로는 절대 구현할 수 없는 AX Dental OS만의 경쟁 우위입니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 17 -->
+<section class="section">
+  <div class="container">
+    <div class="fu">
+      <div class="slide-eyebrow">Global Architecture</div>
+      <div class="slide-title">강력한 확장성을 가진 글로벌 플랫폼 아키텍처</div>
+      <div class="slide-img-box"><img src="AX덴탈그룹 소개자료/슬라이드17.PNG" alt="글로벌 플랫폼 아키텍처"></div>
+      <div class="slide-caption"><p>AX Dental의 글로벌 플랫폼은 5개의 레이어로 구성된 확장 가능한 아키텍처를 기반으로 합니다. 이 구조는 단순히 현재 기능을 나열한 것이 아니라, 글로벌 어느 시장에서도 동일한 품질의 서비스를 제공할 수 있는 인프라 설계입니다.<br><br><strong>L1 Data Collection Layer</strong>: 치과의 모든 디지털 접점 — CT, X-ray, EMR, 예약 시스템, 결제 데이터, 환자 피드백 — 에서 데이터를 수집합니다. 표준화된 API를 통해 기존 병원 시스템과 연동이 가능하며, 별도의 하드웨어 교체 없이 도입할 수 있습니다.<br><br><strong>L2 AI Engine Layer</strong>: 수집된 데이터를 기반으로 6개의 전문화된 AI 모델이 작동합니다. 각 모델은 독립적으로 업데이트되며, 더 많은 데이터가 축적될수록 정확도가 자동으로 향상됩니다.<br><br><strong>L3 Clinical Applications</strong>: AI 진단 리포트, Treatment Story Engine, 예측 시뮬레이션 등 임상 현장에서 직접 사용되는 애플리케이션들입니다.<br><br><strong>L4 Management Suite</strong>: 경영 대시보드, 수익 분석, 노쇼 예측, 보험 청구 최적화, HR Analytics가 포함됩니다.<br><br><strong>L5 Growth Platform</strong>: SEO·AIO 콘텐츠 자동화, 환자 LTV 기반 마케팅, 신환 유입 최적화를 담당합니다.<br><br>이 5-레이어 구조는 글로벌 확장 시에도 핵심 아키텍처의 변경 없이 각 시장의 언어·규정·데이터 환경에 맞춰 빠르게 적용할 수 있습니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 21 -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="fu">
+      <div class="slide-eyebrow">Competitive Analysis</div>
+      <div class="slide-title">글로벌 치과 AI Top 10 분석 및 AX Dental의 압도적 우위</div>
+      <div class="slide-img-box"><img src="AX덴탈그룹 소개자료/슬라이드21.PNG" alt="글로벌 치과 AI 비교"></div>
+      <div class="slide-caption"><p>글로벌 치과 AI 시장의 Top 10 기업들을 4개 역량 축으로 비교 분석한 결과는 AX Dental의 압도적인 포지셔닝을 명확히 보여줍니다.<br><br><strong>Overjet(미국)</strong>은 FDA 승인을 받은 치과 AI 기업으로, X-ray 영상 분석에서 세계 최고 수준의 정확도를 보유하고 있습니다. 그러나 Clinical AI 이외의 영역은 제공하지 않습니다. 수억 달러의 투자를 받아 '영상 진단' 하나의 기능에 집중된 포인트 솔루션입니다.<br><br><strong>Pearl(미국)</strong>은 AI 보조 치과 영상 분석 솔루션으로, 여러 치과 체인 네트워크에 도입되어 있습니다. 역시 Clinical AI에 특화되어 있으며, 경영·마케팅 영역은 범위 밖입니다.<br><br><strong>VideaHealth(미국)</strong>는 영상 진단 AI에 Patient 커뮤니케이션 기능을 일부 추가했으나, 통합 플랫폼 수준에는 미치지 못합니다.<br><br><strong>AX Dental(글로벌)</strong>은 이 비교에서 유일하게 Clinical AI·Patient AI·Management AI·Growth AI 4개 영역 전체에 체크마크를 받는 플랫폼입니다. 글로벌 유니콘 기업들이 영상 진단이라는 좁은 시장에 갇혀 경쟁하는 동안, AX Dental Group은 치과 운영 전 영역을 통합하는 훨씬 큰 시장을 개척하고 있습니다. 이것이 AX Dental이 세계 최초 Dental AI OS로 불리는 이유입니다.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA -->
+<section style="padding:80px 0;background:linear-gradient(160deg,#F0F7FF 0%,#F0FAF8 100%);">
+  <div class="container text-center">
+    <div class="fu">
+      <h2 class="sec-title mb-4">지금 바로 시작하세요</h2>
+      <p class="sec-desc mx-auto" style="max-width:480px;">AX Dental OS의 상세 데모와 병원 맞춤 제안서를 무료로 받아보세요.</p>
+      <div class="flex gap-4 justify-center mt-8 flex-wrap">
+        <a href="contact.html" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#0ABFA3,#1E6FBF);color:#fff;font-weight:700;font-size:0.9rem;border-radius:12px;padding:14px 30px;text-decoration:none;box-shadow:0 4px 20px rgba(10,191,163,0.28);">도입 문의하기 →</a>
+        <a href="services.html" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--navy);font-weight:600;font-size:0.9rem;border-radius:12px;padding:14px 28px;border:1.5px solid var(--border);text-decoration:none;">AI 서비스 보기</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer-bg" style="padding:48px 0 32px;">
+  <div class="container">
+    <div class="flex flex-col md:flex-row justify-between gap-10">
+      <div>
+        <a href="index.html"><img src="로고-AX 덴탈그룹.png" alt="AX Dental Group" style="height:34px;object-fit:contain;margin-bottom:16px;display:block;"></a>
+        <p style="font-size:0.82rem;color:rgba(255,255,255,0.85);line-height:1.8;max-width:240px;">치과 산업 AI 혁신을 선도합니다.<br>"AI가 운영하는 치과"를 함께 만들어 갑니다.</p>
+      </div>
+      <div class="flex gap-14">
+        <div>
+          <div style="font-size:0.7rem;font-weight:800;color:rgba(255,255,255,0.85);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px;">메뉴</div>
+          <a class="footer-link" href="platform.html">플랫폼 소개</a>
+          <a class="footer-link" href="services.html">AI 서비스</a>
+          <a class="footer-link" href="cases.html">도입 사례</a>
+          <a class="footer-link" href="market.html">시장 기회</a>
+          <a class="footer-link" href="../12-4 디지털스마일치과/proposal.html" target="_blank">협업 제안서</a>
+        </div>
+        <div>
+          <div style="font-size:0.7rem;font-weight:800;color:rgba(255,255,255,0.85);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px;">문의</div>
+          <a class="footer-link" href="contact.html">도입 문의</a>
+          <a class="footer-link" href="cases.html">파트너 사례</a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.12);margin-top:40px;padding-top:22px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;">
+      <p style="font-size:0.73rem;color:rgba(255,255,255,0.7);">© 2025 AX덴탈그룹. All rights reserved.</p>
+      <p style="font-size:0.73rem;color:rgba(255,255,255,0.7);">Powered by <span style="color:#0ABFA3;font-weight:700;">AI</span></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fu').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
