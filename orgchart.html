@@ -13,21 +13,23 @@
     html{scroll-behavior:smooth;}
     body{font-family:'Pretendard','Noto Sans KR',sans-serif;background:#fff;color:#0A1628;-webkit-font-smoothing:antialiased;}
     :root{--navy:#0A1628;--navy2:#162540;--teal:#0ABFA3;--teal-light:#E6FAF7;--blue:#1E6FBF;--blue-light:#EBF3FD;--sub:#0E1E30;--sub2:#1A3050;--border:#E4EAF2;--bg:#F7F9FC;}
-    .nav{background:rgba(244,248,253,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);position:fixed;top:0;left:0;right:0;z-index:100;}
+    .nav{background:rgba(248,252,255,0.98);backdrop-filter:blur(20px);border-bottom:1.5px solid rgba(10,191,163,0.2);box-shadow:0 4px 24px rgba(10,22,40,0.08);position:fixed;top:0;left:0;right:0;z-index:100;}
     .nav-link{color:var(--sub);font-size:0.85rem;font-weight:500;transition:color .2s;cursor:pointer;text-decoration:none;}
     .nav-link:hover,.nav-link.nav-active{color:var(--teal);font-weight:700;}
-    .btn-cta-nav{background:linear-gradient(135deg,#0ABFA3,#1E6FBF);color:#fff;font-weight:700;font-size:0.82rem;border:1.5px solid rgba(255,255,255,0.3);border-radius:9px;padding:9px 20px;cursor:pointer;box-shadow:0 2px 12px rgba(10,191,163,0.25);transition:box-shadow .2s,transform .2s;text-decoration:none;display:inline-block;}
-    .btn-cta-nav:hover{box-shadow:0 4px 18px rgba(10,191,163,0.35);transform:translateY(-1px);}
-    .page-hero{background:linear-gradient(160deg,#E6EFF9 0%,#F5FFFE 50%,#E8F8F5 100%);padding:130px 0 80px;position:relative;overflow:hidden;}
+    .btn-cta-nav{background:linear-gradient(135deg,#0ABFA3,#1E6FBF);color:#fff;font-weight:700;font-size:0.82rem;border:1.5px solid rgba(255,255,255,0.35);border-radius:9px;padding:9px 22px;cursor:pointer;box-shadow:0 4px 18px rgba(10,191,163,0.38),inset 0 1px 0 rgba(255,255,255,0.2);transition:box-shadow .2s,transform .2s;text-decoration:none;display:inline-block;}
+    .btn-cta-nav:hover{box-shadow:0 8px 28px rgba(10,191,163,0.48),inset 0 1px 0 rgba(255,255,255,0.2);transform:translateY(-1px);}
+    .btn-manual-nav{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#E6FAF7,#EBF3FD);color:var(--navy);font-weight:700;font-size:0.82rem;border:1.5px solid rgba(10,191,163,0.35);border-radius:9px;padding:8px 16px;cursor:pointer;transition:box-shadow .2s,transform .2s,background .2s;text-decoration:none;}
+    .btn-manual-nav:hover{background:linear-gradient(135deg,#d0f5ef,#daeaf8);box-shadow:0 3px 14px rgba(10,191,163,0.2);transform:translateY(-1px);}
+    .page-hero{background:linear-gradient(160deg,#D8EBF8 0%,#EDF9F5 50%,#D8F0FA 100%);padding:130px 0 80px;position:relative;overflow:hidden;}
     .page-hero-dot{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,rgba(10,191,163,0.10) 1.5px,transparent 1.5px);background-size:32px 32px;}
     .section{padding:90px 0;}
-    .section-alt{background:linear-gradient(160deg,#EDF4FB 0%,#F0FAF8 100%);}
+    .section-alt{background:linear-gradient(160deg,#E4F1FB 0%,#E8F9F4 100%);}
     .container{max-width:1160px;margin:0 auto;padding:0 24px;}
-    .eyebrow{font-size:0.7rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:10px;}
+    .eyebrow{display:inline-block;font-size:0.68rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:12px;background:linear-gradient(135deg,#E6FAF7,#EBF3FD);border:1px solid rgba(10,191,163,0.28);border-radius:50px;padding:4px 14px;}
     .sec-title{font-size:clamp(1.9rem,3vw,2.7rem);font-weight:900;color:var(--navy);letter-spacing:-0.03em;line-height:1.18;}
     .sec-desc{font-size:0.97rem;color:var(--sub);line-height:1.82;margin-top:12px;}
-    .divider{width:48px;height:3px;background:linear-gradient(90deg,#0ABFA3,#1E6FBF);border-radius:3px;margin:14px 0;}
-    .footer-bg{background:#1A3050;border-top:1px solid rgba(255,255,255,0.05);}
+    .divider{width:64px;height:4px;background:linear-gradient(90deg,#0ABFA3,#1E6FBF,#B8960C);border-radius:4px;margin:14px 0;box-shadow:0 2px 10px rgba(10,191,163,0.3);}
+    .footer-bg{background:linear-gradient(135deg,#0A1828 0%,#1A3050 60%,#112240 100%);border-top:2px solid rgba(10,191,163,0.22);}
     .footer-link{font-size:0.82rem;color:rgba(255,255,255,0.97);cursor:pointer;transition:color .2s;display:block;margin-bottom:6px;text-decoration:none;}
     .footer-link:hover{color:#0ABFA3;}
     .fu{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease;}
@@ -97,6 +99,7 @@
         <a class="nav-link" href="cases.html">도입 사례</a>
         <a class="nav-link" href="market.html">시장 기회</a>
         <a class="nav-link nav-active" href="orgchart.html">조직도</a>
+        <a class="nav-link" href="news.html">뉴스</a>
         <a class="nav-link" href="../12-4 디지털스마일치과/proposal.html" target="_blank">협업 제안서</a>
         <a class="btn-cta-nav" href="contact.html">도입 문의</a>
       </div>
@@ -259,6 +262,10 @@
       <div>
         <a href="index.html"><img src="로고-AX 덴탈그룹.png" alt="AX Dental Group" style="height:34px;object-fit:contain;margin-bottom:16px;display:block;"></a>
         <p style="font-size:0.82rem;color:rgba(255,255,255,0.97);line-height:1.8;max-width:240px;">치과 산업 AI 혁신을 선도합니다.<br>"AI가 운영하는 치과"를 함께 만들어 갑니다.</p>
+        <a href="manual.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:0.8rem;font-weight:700;color:rgba(255,255,255,0.85);background:rgba(10,191,163,0.15);border:1px solid rgba(10,191,163,0.3);border-radius:8px;padding:7px 13px;text-decoration:none;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          이용 매뉴얼
+        </a>
       </div>
       <div class="flex gap-14">
         <div>
